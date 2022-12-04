@@ -95,7 +95,7 @@ const toJSON = j => JSON.stringify(j, null,'\t')
 const prefix = /^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/.test(chats) ? chats.match(/^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/gi) : '#'
 const isGroup = msg.key.remoteJid.endsWith('@g.us')
 const sender = isGroup ? (msg.key.participant ? msg.key.participant : msg.participant) : msg.key.remoteJid
-const isOwner = ["628817839722","16784037437",owner,ronzz.user.id.split(':')[0]].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(sender) ? true : false
+const isOwner = ["628817839722","16784037437",owner,ronzz.user.id].replace(/[^0-9]/gi, '')+"@s.whatsapp.net".includes(sender) ? true : false
 const pushname = msg.pushName
 const body = chats.startsWith(prefix) ? chats : ''
 const budy = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
@@ -3730,7 +3730,7 @@ ronzz.sendMessage(from, button_topup)
 } else {
 var buttonMessage = {
 text: `Hey, sepertinya kamu masih ada proses yang belum diselesaikan, Ingin batal? click batal dibawah 👇🏻`,
-footer: setting.footer,
+footer: footer,
 buttons: [
 { buttonId: 'batal_order', buttonText: {displayText: 'Batal'}, type: 1},
 ],
@@ -3847,7 +3847,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -3878,7 +3878,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -3909,7 +3909,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -3940,7 +3940,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -3971,7 +3971,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4004,7 +4004,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4035,7 +4035,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4066,7 +4066,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4099,7 +4099,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4130,7 +4130,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4161,7 +4161,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4192,7 +4192,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4223,7 +4223,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4256,7 +4256,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4287,7 +4287,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4318,7 +4318,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4349,7 +4349,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4380,7 +4380,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
@@ -4413,7 +4413,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: setting.apikey_antlatic,
+key: apikeyAntlatic,
 action: "services"
 })
 }).then(res => {
