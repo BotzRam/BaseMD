@@ -168,13 +168,13 @@ function ssweb (url, device = 'desktop') {
 			const result = []
 			$('div.imsakiyah-content').each(function(a, b) {
 				result.push({
-					tanggal = $(b).find('tr:nth-child(1) > td:nth-child(1)').text()
-					imsak = $(b).find('tr:nth-child(1) > td:nth-child(2)').text()
-					subuh = $(b).find('tr:nth-child(1) > td:nth-child(3)').text()
-					dzuhur = $(b).find('tr:nth-child(1) > td:nth-child(4)').text()
-					ashar = $(b).find('tr:nth-child(1) > td:nth-child(5)').text()
-					maghrib = $(b).find('tr:nth-child(1) > td:nth-child(6)').text()
-					isya = $(b).find('tr:nth-child(1) > td:nth-child(7)').text()
+					tanggal: $(b).find('tr:nth-child(1) > td:nth-child(1)').text(), 
+					imsak: $(b).find('tr:nth-child(1) > td:nth-child(2)').text(), 
+					subuh: $(b).find('tr:nth-child(1) > td:nth-child(3)').text(), 
+					dzuhur: $(b).find('tr:nth-child(1) > td:nth-child(4)').text(), 
+					ashar: $(b).find('tr:nth-child(1) > td:nth-child(5)').text(), 
+					maghrib: $(b).find('tr:nth-child(1) > td:nth-child(6)').text(), 
+					isya: $(b).find('tr:nth-child(1) > td:nth-child(7)').text()
 				})
 			})
 			resolve(result)
