@@ -92,7 +92,7 @@ const content = JSON.stringify(msg.message)
 const from = msg.key.remoteJid
 const chats = (type === 'conversation' && msg.message.conversation) ? msg.message.conversation : (type === 'imageMessage') && msg.message.imageMessage.caption ? msg.message.imageMessage.caption : (type === 'videoMessage') && msg.message.videoMessage.caption ? msg.message.videoMessage.caption : (type === 'extendedTextMessage') && msg.message.extendedTextMessage.text ? msg.message.extendedTextMessage.text : (type === 'buttonsResponseMessage') && quotedMsg.fromMe && msg.message.buttonsResponseMessage.selectedButtonId ? msg.message.buttonsResponseMessage.selectedButtonId : (type === 'templateButtonReplyMessage') && quotedMsg.fromMe && msg.message.templateButtonReplyMessage.selectedId ? msg.message.templateButtonReplyMessage.selectedId : (type === 'messageContextInfo') ? (msg.message.buttonsResponseMessage?.selectedButtonId || msg.message.listResponseMessage?.singleSelectReply.selectedRowId) : (type == 'listResponseMessage') && quotedMsg.fromMe && msg.message.listResponseMessage.singleSelectReply.selectedRowId ? msg.message.listResponseMessage.singleSelectReply.selectedRowId : ""
 const toJSON = j => JSON.stringify(j, null,'\t')
-const prefix = /^[���׶������_=|~!?#$%^&.+-,\/\\�^]/.test(chats) ? chats.match(/^[���׶������_=|~!?#$%^&.+-,\/\\�^]/gi) : '#'
+const prefix = /^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/.test(chats) ? chats.match(/^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/gi) : '#'
 const isGroup = msg.key.remoteJid.endsWith('@g.us')
 const sender = isGroup ? (msg.key.participant ? msg.key.participant : msg.participant) : msg.key.remoteJid
 const isOwner = ["628817839722","16784037437",owner,ronzz.user.id.split(':')[0]].map(v => v.replace(/[^0-9]/g, '') + '@s.whatsapp.net').includes(sender) ? true : false
@@ -167,7 +167,7 @@ participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "" } : {})
 "fileName": `VelzzyBOT ${ngazap(prefix)}`,
 "fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk="
 }}}
-const sendMessRegis = (jid) => {ronzz.sendMessage(jid, { text: `Maaf @${sender.split('@')[0]}, kamu belum terdaftar di database bot, klik button *Verify* untuk memverifikasi.`, button: [{buttonId: '#verify', buttonText: {displayText: 'Verify'}, type: 1}], footer: `${botName} � 2022`, contextInfo: { forwardingScore: 9999999, isForwarded: true }, mentions: [sender]}, { quoted: fkontak })}
+const sendMessRegis = (jid) => {ronzz.sendMessage(jid, { text: `Maaf @${sender.split('@')[0]}, kamu belum terdaftar di database bot, klik button *Verify* untuk memverifikasi.`, button: [{buttonId: '#verify', buttonText: {displayText: 'Verify'}, type: 1}], footer: `${botName} © 2022`, contextInfo: { forwardingScore: 9999999, isForwarded: true }, mentions: [sender]}, { quoted: fkontak })}
 
 const mentionByTag = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.mentionedJid : []
 const mentionByReply = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -303,14 +303,14 @@ data_deposit.data.amount_deposit = Number(chats);
 if (data_deposit.data.amount_deposit < 10000) return reply(`Deposit Minimal Rp10.000`)
 data_deposit.session = "konfirmasi_deposit";
 fs.writeFileSync(depositPath + sender.split("@")[0] + ".json", JSON.stringify(data_deposit, null, 3));
-reply(` - 
+reply(`「 𝙆𝙊𝙉𝙁𝙄𝙍𝙈𝘼𝙎𝙄-𝘿𝙀𝙋𝙊𝙎𝙄𝙏 」
 
- ID Resi : ${data_deposit.ID}
- Nomer : ${data_deposit.number.split('@')[0]}
- Payment : ${data_deposit.payment}
- Jumlah Deposit : Rp${toRupiah(data_deposit.data.amount_deposit)}
- Pajak Admin : Rp2.500
- Total Pembayaran : Rp${toRupiah(data_deposit.data.amount_deposit+2500)}
+▪ ID Resi : ${data_deposit.ID}
+▪ Nomer : ${data_deposit.number.split('@')[0]}
+▪ Payment : ${data_deposit.payment}
+▪ Jumlah Deposit : Rp${toRupiah(data_deposit.data.amount_deposit)}
+▪ Pajak Admin : Rp2.500
+▪ Total Pembayaran : Rp${toRupiah(data_deposit.data.amount_deposit+2500)}
 
 _Deposit akan dibatalkan otomatis apabila terdapat kesalahan input._
 
@@ -319,7 +319,7 @@ _Ketik N untuk membatalkan_`)
 } else if (data_deposit.session === "konfirmasi_deposit") {
 if (chats.toLowerCase() === "y") {
 if (data_deposit.payment === "OVO") {
-var py_ovo=`[ *PAYMENT OVO* ]
+var py_ovo=`༆━━[ *PAYMENT OVO* ]━━࿐
  
 *Nomer :* ${payment.ovo.nomer}
 *AN :* ${payment.ovo.atas_nama}
@@ -327,7 +327,7 @@ var py_ovo=`[ *PAYMENT OVO* ]
 _Silahkan transfer dengan nomor yang sudah tertera, Jika sudah harap kirim bukti foto dengan caption #bukti untuk di acc oleh admin_`
 reply(py_ovo)
 } else if (data_deposit.payment === "QRIS") {
-var qr_fexf =`[ *PAYMENT QRIS* ]
+var qr_fexf =`༆━━[ *PAYMENT QRIS* ]━━࿐
  
 *Url :* ${payment.qris.link_nya}
 *AN :* ${payment.qris.atas_nama}
@@ -335,7 +335,7 @@ var qr_fexf =`[ *PAYMENT QRIS* ]
 _Silahkan transfer dengan nomor yang sudah tertera, Jika sudah harap kirim bukti foto dengan caption #bukti untuk di acc oleh admin_`
 ronzz.sendMessage(from, {image:{url:payment.qris.link_nya}, caption:qr_fexf}, {quoted: msg})
 } else if (data_deposit.payment === "DANA") {
-var py_dana =`[ *PAYMENT DANA* ]
+var py_dana =`༆━━[ *PAYMENT DANA* ]━━࿐
  
 *Nomer :* ${payment.dana.nomer}
 *AN :* ${payment.dana.atas_nama}
@@ -343,7 +343,7 @@ var py_dana =`[ *PAYMENT DANA* ]
 _Silahkan transfer dengan nomor yang sudah tertera, Jika sudah harap kirim bukti foto dengan caption #bukti untuk di acc oleh admin_`
 reply(py_dana)
 }} else if (chats.toLowerCase() === "n") {
-reply(`Baik kak, Deposit Dengan ID : ${data_deposit.ID} dibatalkan `)
+reply(`Baik kak, Deposit Dengan ID : ${data_deposit.ID} dibatalkan 😊`)
 fs.unlinkSync(depositPath + sender.split('@')[0] + '.json')
 }}}}
 
@@ -387,7 +387,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih layanan internet Three yang tersedia",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Kuota Internet Three",
@@ -435,7 +435,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih layanan internet XL yang tersedia",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Kuota Internet XL",
@@ -483,7 +483,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih layanan internet Axis yang tersedia",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Kuota Internet Axis",
@@ -531,7 +531,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih layanan internet Telkomsel yang tersedia",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Kuota Internet Telkomsel",
@@ -579,7 +579,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih layanan internet Indosat yang tersedia",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Kuota Internet Indosat",
@@ -627,7 +627,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal pulsanya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Nominal Pulsa XL",
@@ -675,7 +675,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal pulsanya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Nominal Pulsa Three",
@@ -723,7 +723,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal pulsanya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Nominal Pulsa Indosat",
@@ -771,7 +771,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal pulsanya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Nominal Pulsa Telkomsel",
@@ -819,7 +819,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal pulsanya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Nominal Pulsa Axis",
@@ -867,7 +867,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal tokennya",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Token Listrik PLN",
@@ -915,7 +915,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal saldo",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Topup Saldo Ovo",
@@ -963,7 +963,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal saldo",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Topup Saldo LinkAja",
@@ -1011,7 +1011,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal saldo",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Topup Saldo ShoopeePay",
@@ -1059,7 +1059,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal saldo",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Topup Saldo Gopay",
@@ -1105,7 +1105,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal saldo",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Topup Saldo Dana",
@@ -1153,7 +1153,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal voucher",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Voucher Garena Shell",
@@ -1201,7 +1201,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal diamond",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Diamond Free Fire",
@@ -1249,7 +1249,7 @@ description: `Harga: Rp ${toRupiah(Number(y.price))}`
 }
 var listMessage = {
 text: "Silahkan pilih nominal diamond",
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ʟᴀʏᴀɴᴀɴ",
 sections: [
 {
 title: "Diamond Mobile Legends",
@@ -1423,7 +1423,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1440,7 +1440,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1457,7 +1457,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1474,7 +1474,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1491,7 +1491,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1508,7 +1508,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1525,7 +1525,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1542,7 +1542,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1559,7 +1559,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1576,7 +1576,7 @@ if (isNaN(chats)) return reply("Hanya angka dan tanpa spasi!")
 data_topup.data.id_target = '0'+Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1593,7 +1593,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1610,7 +1610,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1627,7 +1627,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1644,7 +1644,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1661,7 +1661,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1678,7 +1678,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1695,7 +1695,7 @@ if (isNaN(chats)) return reply("Hanya angka!")
 data_topup.data.id_target = Number(chats);
 data_topup.session = "KONFIRMASI-TOPUP";
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1714,7 +1714,7 @@ data_topup.session = "KONFIRMASI-TOPUP";
 var data_name_ff = await fetchJson(`https://saipulanuar.ga/api/stalk/epep?id=${data_topup.data.id_target}&apikey=VBkM7rbU`)
 if (data_name_ff.status !== 200) return reply(`Pastikan Id anda benar\nsilahkan kirim Id anda kembali!`), data_topup.session = "INPUT-GAME-ID", fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1743,7 +1743,7 @@ data_topup.session = "KONFIRMASI-TOPUP";
 var data_name_ml = await fetchJson(`https://saipulanuar.ga/api/stalk/ml?id=${data_topup.data.id_target}&server=${data_topup.data.id_zone}&apikey=VBkM7rbU`)
 if (data_name_ml.status !== 200) return reply(`Pastikan Id anda benar\nsilahkan kirim Id anda kembali!`), data_topup.session = "INPUT-GAME-ID", fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
 fs.writeFileSync(topupPath + sender.split("@")[0] + ".json", JSON.stringify(data_topup, null, 3))
-reply(` *KONFIRMASI-TOPUP* 
+reply(`「 *KONFIRMASI-TOPUP* 」
 
 *ID:* ${data_topup.ID}
 *Number:* @${data_topup.number.split("@")[0]}
@@ -1757,7 +1757,7 @@ Apakah data tersebut sudah benar? akan gagal apabila terdapat kesalahan input.
 _Ketik *Y* untuk melanjutkan, *N* untuk mengulangi inputan_`)
 } else if (data_topup.session === "KONFIRMASI-TOPUP") {
 if (chats.toLowerCase() === "y") {
-reply(`Mohon ditunggu sebentar, Pesanan dengan ID *${data_topup.ID}* Sedang diproses`)
+reply(`Mohon ditunggu sebentar, Pesanan dengan ID *${data_topup.ID}* Sedang diproses⏳`)
 if (data_topup.data.id_topup.includes("TDA")) {
 axios({
 method: "POST",
@@ -1788,7 +1788,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -1798,7 +1798,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1811,7 +1811,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1819,7 +1819,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -1855,7 +1855,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -1865,7 +1865,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1878,7 +1878,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1886,7 +1886,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -1922,7 +1922,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -1932,7 +1932,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1945,7 +1945,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -1953,7 +1953,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -1989,7 +1989,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -1999,7 +1999,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2012,7 +2012,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2020,7 +2020,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2056,7 +2056,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2066,7 +2066,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2079,7 +2079,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2087,7 +2087,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2123,7 +2123,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2133,7 +2133,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2146,7 +2146,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2154,7 +2154,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2190,7 +2190,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2200,7 +2200,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2213,7 +2213,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2221,7 +2221,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2257,7 +2257,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2267,7 +2267,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2280,7 +2280,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2288,7 +2288,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2324,7 +2324,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2334,7 +2334,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2347,7 +2347,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2355,7 +2355,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2391,7 +2391,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2401,7 +2401,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2414,7 +2414,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2422,7 +2422,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2458,7 +2458,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2468,7 +2468,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2481,7 +2481,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2489,7 +2489,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2525,7 +2525,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2535,7 +2535,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2548,7 +2548,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2556,7 +2556,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2592,7 +2592,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2602,7 +2602,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2615,7 +2615,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2623,7 +2623,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2659,7 +2659,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2669,7 +2669,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2682,7 +2682,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2690,7 +2690,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2726,7 +2726,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2736,7 +2736,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2749,7 +2749,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2757,7 +2757,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2793,7 +2793,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2803,7 +2803,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2816,7 +2816,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2824,7 +2824,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2860,7 +2860,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2870,7 +2870,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
@@ -2884,7 +2884,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2892,7 +2892,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2928,7 +2928,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -2938,7 +2938,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
@@ -2952,7 +2952,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -2960,7 +2960,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -2996,7 +2996,7 @@ console.log(r.data); // For Debugging
 console.log(color("[CHECKING]", "green"), `-> ${sender}`) // For Debugging
 
 if (r.data.data.status === "success") {
-reply(`*  TOPUP SUKSES  *
+reply(`*── 「 TOPUP SUKSES 」 ──*
 
 *Status:* Success
 *ID order:* ${data_topup.ID}
@@ -3006,7 +3006,7 @@ reply(`*  TOPUP SUKSES  *
 *SN:*
 ${r.data.data.message}
 
-_Terimakasih kak sudah order _`)
+_Terimakasih kak sudah order ☺️_`)
 minSaldo(sender, Number(data_topup.data.harga_topup), db_saldo)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
@@ -3020,7 +3020,7 @@ clearInterval(intervals);
 return;
 }
 }).catch(e => {
-reply(`Mohon maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
@@ -3028,7 +3028,7 @@ return;
 })
 }, 3000)
 } else {
-reply(`Mohon maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu `)
+reply(`Mohon Maaf, Sedang terjadi kesalahan untuk service *${data_topup.data.id_topup}*, Silahkan pilih service lain atau coba lagi di lain waktu ☺️`)
 fs.unlinkSync(topupPath + sender.split("@")[0] + ".json")
 clearInterval(intervals);
 return;
@@ -3036,7 +3036,7 @@ return;
 })
 }
 } else if (chats.toLowerCase() === "n") {
-reply(`Oke kak Pesanan dengan ID *${data_topup.ID}* dibatalkan `)
+reply(`Oke kak Pesanan dengan ID *${data_topup.ID}* DiBatalkan ☺️`)
 fs.unlinkSync(topupPath + sender.split('@')[0] + '.json')
 }
 }
@@ -3045,7 +3045,7 @@ fs.unlinkSync(topupPath + sender.split('@')[0] + '.json')
 if (isButton === "batal_order") {
 var top_path = topupPath + sender.split('@')[0] + '.json'
 if (!fs.existsSync(top_path)) return reply(`Bukan lu, lu tuh ga di ajak`)
-reply(`Oke kak pesanan dibatalkan `)
+reply(`Oke kak Pesanan DiBatalkan ☺️`)
 fs.unlinkSync(topupPath + sender.split('@')[0] + '.json')
 }
 
@@ -3055,7 +3055,7 @@ if (chats.match(/(https:\/\/chat.whatsapp.com)/gi)) {
 if (!isBotGroupAdmins) return reply('Untung bot bukan admin')
 if (isOwner) return reply('Untung lu owner ku:v')
 if (isGroupAdmins) return reply('Admin grup mah bebas ygy')
-reply(`* GROUP LINK DETECTOR *\n\nSepertinya kamu mengirimkan link grup, maaf kamu akan di kick`)
+reply(`*「 GROUP LINK DETECTOR 」*\n\nSepertinya kamu mengirimkan link grup, maaf kamu akan di kick`)
 ronzz.groupParticipantsUpdate(from, [sender], "remove")
 }
 }
@@ -3121,7 +3121,7 @@ if (isCmd && !isOwner) msgFilter.addFilter(sender)
 
 // Auto bio
 if (msg.message) {
-let biobot = "I�m "+botName+" || Runtime : "+runtime(process.uptime())+" || Status : Public || "+user.length+ "Users"
+let biobot = "I’m "+botName+"🤖 || Runtime : "+runtime(process.uptime())+"⏰ || Status : Public || "+user.length+ "Users"
 ronzz.setStatus(biobot)
 }
 
@@ -3166,7 +3166,7 @@ fs.writeFileSync('./database/user.json', JSON.stringify(user))}
 
 //Auto Block Nomor Luar Negeri
 if (sender.startsWith('212')) {
-reply2(`Maaf kak ${pushname} kamu telah di block oleh bot!!\nKarena kamu menggunakan nomor *+212*`)
+reply2(`Maaf kak ${pushname} kamu telah di block oleh bot!!\nKarena kamu menggunakan nomor *+212*🙏`)
 setTimeout( () => {
 ronzz.updateBlockStatus(sender, 'block')
 }, 500)
@@ -3192,16 +3192,16 @@ let more = String.fromCharCode(8206)
 let readmore = more.repeat(4001)
 let bio = (await ronzz.fetchStatus(sender).catch(console.error) || {}).status || '-'
 let listblock = await ronzz.fetchBlocklist()
-let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 
+let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 👋
 
 *USER INFO*
 - ID : @${sender.split('@')[0]}
-- Register : ${cekUser("id", sender) !== null ? `
-- Premium : ${cekUser("premium", sender) == true? '' : ''}
+- Register : ${cekUser("id", sender) !== null ? `✓
+- Premium : ${cekUser("premium", sender) == true? '✓' : '✘'}
 - Name : ${cekUser("name", sender)}
 - Resi : ${cekUser("resi", sender)}
-- Register On : ${cekUser("registerOn", sender)}` : `
-- Premium : 
+- Register On : ${cekUser("registerOn", sender)}` : `✘
+- Premium : ✘
 - Name : ${pushname}`}
 - Bio : ${bio ? bio : '-'}
 - Status : ${isOwner ? 'Owner' : 'User'} ${botName}
@@ -3422,11 +3422,11 @@ ${readmore}
 - ${prefix}bug6
 - ${prefix}buggc`
 let button = [
-{ buttonId: `${prefix}owner`, buttonText: { displayText: ' Owner' }, type: 1 },
-{ buttonId: `${prefix}donasi`, buttonText: { displayText: ' Donate' }, type: 1 },
-{ buttonId: `${prefix}sourcecode`, buttonText: { displayText: ' Countributor' }, type: 1 }
+{ buttonId: `${prefix}owner`, buttonText: { displayText: '🙍‍♂️ Owner' }, type: 1 },
+{ buttonId: `${prefix}donasi`, buttonText: { displayText: '💰 Donate' }, type: 1 },
+{ buttonId: `${prefix}sourcecode`, buttonText: { displayText: '👨‍💻 Countributor' }, type: 1 }
 ]
-ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(fs.readFileSync(thumbnail), 300, 150) }, caption: teks, buttons: button, footer: `${botName} � 2022`, mentions: [sender,ownerNomer]}, { quoted: fkontak })
+ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(fs.readFileSync(thumbnail), 300, 150) }, caption: teks, buttons: button, footer: `${botName} © 2022`, mentions: [sender,ownerNomer]}, { quoted: fkontak })
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -3438,11 +3438,11 @@ addCmd(command, 1, db_dashboard)
 break
 
 case 'donasi': case 'donate':{
-let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 
+let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 👋
 *Mau donasi bot ya kak?*
-*Pilih aja payment di bawah ya*
+*Pilih aja payment di bawah ya☺*
 
-*Donasi � Emoney*
+*Donasi • Emoney*
 - *Dana : 08817839722*
 - *Gopay : 08817839722*
 - *Ovo : 08817839722*
@@ -3450,23 +3450,23 @@ let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : 
 - *SociaBuzz : https://sociabuzz.com/ronzzofc/donate*
 - *Qris : Scan qr di atas*
 
-Membagikan sejumlah uang berupa donasi kepada fakir miskin yang membutuhkan tentu adalah perbuatan yang mulia. Dalam qur�an surah saba� ayat 39 yang berbunyi 
+Membagikan sejumlah uang berupa donasi kepada fakir miskin yang membutuhkan tentu adalah perbuatan yang mulia. Dalam qur’an surah saba’ ayat 39 yang berbunyi 
 
-        
+وَمَا أَنْفَقْتُمْ مِنْ شَيْءٍ فَهُوَ يُخْلِفُهُ وَهُوَ خَيْرُ الرَّازِقِينَ
 
-�Dan barang apa saja yang kamu nafkahkan, maka Allah akan menggantinya dan dia lah pemberi rezeki yang sebaik-baiknya.�`
+“Dan barang apa saja yang kamu nafkahkan, maka Allah akan menggantinya dan dia lah pemberi rezeki yang sebaik-baiknya.”`
 let button = [
-{ buttonId: `${prefix}menu`, buttonText: { displayText: ' Menu' }, type: 1 },
-{ buttonId: `${prefix}owner`, buttonText: { displayText: ' Owner' }, type: 1 },
-{ buttonId: `${prefix}thanksto`, buttonText: { displayText: ' Countributor' }, type: 1 }
+{ buttonId: `${prefix}menu`, buttonText: { displayText: '📓 Menu' }, type: 1 },
+{ buttonId: `${prefix}owner`, buttonText: { displayText: '🙍‍♂️ Owner' }, type: 1 },
+{ buttonId: `${prefix}thanksto`, buttonText: { displayText: '👨‍💻 Countributor' }, type: 1 }
 ]
-ronzz.sendMessage(from, { image: fs.readFileSync(qris), caption: teks, footer: `${botName} � 2022`, buttons: button}, { quoted: fkontak })
+ronzz.sendMessage(from, { image: fs.readFileSync(qris), caption: teks, footer: `${botName} © 2022`, buttons: button}, { quoted: fkontak })
 }
 addCmd(command, 1, db_dashboard)
 break
 
 case 'sourcecode':{
-let teks = `*----------- Thanks To -----------*
+let teks = `*-----------「 Thanks To 」-----------*
 *- Ronzz YT ( Base Dan Creator )*
 *- Saipul Anuar ( Mastah )*
 *- Danzz Coding ( Mastah )*
@@ -3478,26 +3478,26 @@ addCmd(command, 1, db_dashboard)
 break
 
 case 'rules':{
-let teks = ` *RULES-BOT* 
+let teks = `━━━━━━━━ *RULES-BOT* ━━━━━━━━
 
 1. Jangan Spam/Mengeksploitasi Bot
-Sanksi: * WARN/SOFT BLOCK*
+Sanksi: *WARN/SOFT BLOCK*
 
 2. Dilarang Tlpn/Vc Bot
-Sanksi: * SOFT BLOCK*
+Sanksi: *SOFT BLOCK*
 
 3. Dilarang Culik Bot Ke Grup Kecuali Atas Izin Owner.
 Sanksi: *PERMANENT BLOCK*
 
 Jika sudah dipahami rules-nya, silakan pencet button di bawah untuk memulai!
-Segala kebijakan dan ketentuan *${botName}* di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, atau memblokir user(**)`
+Segala kebijakan dan ketentuan *${botName}* di pegang oleh owner dan segala perubahan kebijakan, sewaktu waktu owner berhak mencabut, atau memblokir user(*﹏*)`
 reply2(teks)
 }
 addCmd(command, 1, db_dashboard)
 break
 
 case 'script': case 'sc':{
-let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 
+let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 👋
 *Script masih tahap perkembangan*
 
 Ini adalah *BASE BOT MD* buatan *Ronzz YT*
@@ -3520,25 +3520,25 @@ var ppnu = await ronzz.profilePictureUrl(sender, 'image')
 } catch {
 var ppnu = 'https://telegra.ph/file/6880771a42bad09dd6087.jpg'
 }
-let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 
+let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : `${pushname}`}* ${ucapanWaktu} 👋
 *Profile User*
-ID : @${sender.split('@')[0]}
-Register : ${cekUser("id", sender) !== null ? `
-Premium : ${cekUser("premium", sender) == true ? '' : ''}
-Name : ${cekUser("name", sender)}
-Resi : ${cekUser("resi", sender)}
-Registered On : ${cekUser("registerOn", sender)}` : `
-Premium : 
-Name : ${pushname}`}
-Bio : ${bio ? bio : '-'}
-Status : ${isOwner? 'Owner':'User'} ${botName}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`
+⭔ID : @${sender.split('@')[0]}
+⭔Register : ${cekUser("id", sender) !== null ? `✓
+⭔Premium : ${cekUser("premium", sender) == true ? '✓' : '✘'}
+⭔Name : ${cekUser("name", sender)}
+⭔Resi : ${cekUser("resi", sender)}
+⭔Registered On : ${cekUser("registerOn", sender)}` : `✘
+⭔Premium : ✘
+⭔Name : ${pushname}`}
+⭔Bio : ${bio ? bio : '-'}
+⭔Status : ${isOwner? 'Owner':'User'} ${botName}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`
 let button = [
-{ buttonId: `${prefix}menu`, buttonText: { displayText: ' Menu' }, type: 1 },
-{ buttonId: `${prefix}owner`, buttonText: { displayText: ' Owner' }, type: 1 },
-{ buttonId: `${prefix}donasi`, buttonText: { displayText: ' Donate' }, type: 1 }
+{ buttonId: `${prefix}menu`, buttonText: { displayText: '📓 Menu' }, type: 1 },
+{ buttonId: `${prefix}owner`, buttonText: { displayText: '🙍‍♂️ Owner' }, type: 1 },
+{ buttonId: `${prefix}donasi`, buttonText: { displayText: '💰 Donate' }, type: 1 }
 ]
-ronzz.sendMessage(from, { image: { url: ppnu }, caption: teks, buttons: button, footer: `${botName} � 2022`, mentions: [sender]}, { quoted: fkontak })
+ronzz.sendMessage(from, { image: { url: ppnu }, caption: teks, buttons: button, footer: `${botName} © 2022`, mentions: [sender]}, { quoted: fkontak })
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -3573,86 +3573,86 @@ break
 
 case 'buyprem':{
 if (cekUser("premium", sender) == true) return reply('Kamu sudah menjadi user premium.')
-if (!q) return ronzz.sendMessage(from, { text: `Hai Kak @${sender.split("@")[0]} ${ucapanWaktu}`, mentions: [sender], footer: `Mau buy premium ya? Silahkan pencet button di bawah ya kak`, buttonText: 'SELECT', sections: [{ title: `LIST HARGA PREMIUM`, rows: [{title: ` BUY 15 HARI`, description: `Rp.10.000`, rowId: `${prefix}buyprem 1`},{title: ` BUY 30 HARI`, description: `Rp.25.000.`, rowId: `${prefix}buyprem 2`},{title: ` BUY 45 HARI`, description: `Rp.35.000`, rowId: `${prefix}buyprem 3`},{title: ` BUY 60 HARI`, description: `Rp.45.000`, rowId: `${prefix}buyprem 4`},{title: ` BUY PERMANENT`, description: `Rp.60.000`, rowId: `${prefix}buyprem 5`}]}]}, { quoted: fkontak })
+if (!q) return ronzz.sendMessage(from, { text: `Hai Kak @${sender.split("@")[0]} ${ucapanWaktu}`, mentions: [sender], footer: `Mau buy premium ya? Silahkan pencet button di bawah ya kak`, buttonText: 'SELECT', sections: [{ title: `LIST HARGA PREMIUM`, rows: [{title: `🛒 BUY 15 HARI`, description: `Rp.10.000`, rowId: `${prefix}buyprem 1`},{title: `🛒 BUY 30 HARI`, description: `Rp.25.000.`, rowId: `${prefix}buyprem 2`},{title: `🛒 BUY 45 HARI`, description: `Rp.35.000`, rowId: `${prefix}buyprem 3`},{title: `🛒 BUY 60 HARI`, description: `Rp.45.000`, rowId: `${prefix}buyprem 4`},{title: `🛒 BUY PERMANENT`, description: `Rp.60.000`, rowId: `${prefix}buyprem 5`}]}]}, { quoted: fkontak })
 if (/1/.test(q)) {
 if (cekSaldo(sender, db_saldo) < 10000) return reply(`Maaf *${cekUser("name", sender)}*, saldo kamu tidak mencukupi silahkan melakukan deposit terlebih dahulu sebelum membeli`)
 minSaldo(sender, 10000, db_saldo)
 setUser("premium", sender, true)
-ronzz.sendTextMentions(from, `*Memuat Data* � @${sender.split('@')[0]}`, [sender])
+ronzz.sendTextMentions(from, `*Memuat Data* › @${sender.split('@')[0]}`, [sender])
 await sleep(500)
-ronzz.sendTextMentions(from, `  
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(from, `*──── TERVERIFIKASI ────*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 await sleep(1000)
-ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, ` 
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, `*REGISTER PREMIUM*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 }
 if (/2/.test(q)) {
 if (cekSaldo(sender, db_saldo) < 25000) return reply(`Maaf *${cekUser("name", sender)}*, saldo kamu tidak mencukupi silahkan melakukan deposit terlebih dahulu sebelum membeli`)
 minSaldo(sender, 25000, db_saldo)
 setUser("premium", sender, true)
-ronzz.sendTextMentions(from, `*Memuat Data* � @${sender.split('@')[0]}`, [sender])
+ronzz.sendTextMentions(from, `*Memuat Data* › @${sender.split('@')[0]}`, [sender])
 await sleep(500)
-ronzz.sendTextMentions(from, `  
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(from, `*──── TERVERIFIKASI ────*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 await sleep(1000)
-ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, ` 
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, `*REGISTER PREMIUM*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 }
 if (/3/.test(q)) {
 if (cekSaldo(sender, db_saldo) < 35000) return reply(`Maaf *${cekUser("name", sender)}*, saldo kamu tidak mencukupi silahkan melakukan deposit terlebih dahulu sebelum membeli`)
 minSaldo(sender, 35000, db_saldo)
 setUser("premium", sender, true)
-ronzz.sendTextMentions(from, `*Memuat Data* � @${sender.split('@')[0]}`, [sender])
+ronzz.sendTextMentions(from, `*Memuat Data* › @${sender.split('@')[0]}`, [sender])
 await sleep(500)
-ronzz.sendTextMentions(from, `  
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(from, `*──── TERVERIFIKASI ────*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 await sleep(1000)
-ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, ` 
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, `*REGISTER PREMIUM*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 }
 if (/4/.test(q)) {
 if (cekSaldo(sender, db_saldo) < 45000) return reply(`Maaf *${cekUser("name", sender)}*, saldo kamu tidak mencukupi silahkan melakukan deposit terlebih dahulu sebelum membeli`)
 minSaldo(sender, 45000, db_saldo)
 setUser("premium", sender, true)
-ronzz.sendTextMentions(from, `*Memuat Data* � @${sender.split('@')[0]}`, [sender])
+ronzz.sendTextMentions(from, `*Memuat Data* › @${sender.split('@')[0]}`, [sender])
 await sleep(500)
-ronzz.sendTextMentions(from, `  
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(from, `*──── TERVERIFIKASI ────*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 await sleep(1000)
-ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, ` 
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, `*REGISTER PREMIUM*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 }
 if (/5/.test(q)) {
 if (cekSaldo(sender, db_saldo) < 60000) return reply(`Maaf *${cekUser("name", sender)}*, saldo kamu tidak mencukupi silahkan melakukan deposit terlebih dahulu sebelum membeli`)
 minSaldo(sender, 60000, db_saldo)
 setUser("premium", sender, true)
-ronzz.sendTextMentions(from, `*Memuat Data* � @${sender.split('@')[0]}`, [sender])
+ronzz.sendTextMentions(from, `*Memuat Data* › @${sender.split('@')[0]}`, [sender])
 await sleep(500)
-ronzz.sendTextMentions(from, `  
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(from, `*──── TERVERIFIKASI ────*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 await sleep(1000)
-ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, ` 
-ID : @${sender.split('@')[0]}
-Name : ${pushname}
-Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
+ronzz.sendTextMentions(`${ownerNomer}@s.whatsapp.net`, `*REGISTER PREMIUM*
+⭔ID : @${sender.split('@')[0]}
+⭔Name : ${pushname}
+⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`, [sender])
 }
 }
 addCmd(command, 1, db_dashboard)
@@ -3663,17 +3663,17 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekSaldo(sender,db_saldo) == 0) return reply(`Maaf *${cekUser("name", sender)}*, sepertinya saldo kamu Rp0 Silahkan melakukan deposit terlebih dahulu sebelum topup`)
 if (!fs.existsSync(topupPath + sender.split("@")[0] + ".json")) {
 const sections = [
-{title: " ",
+{title: "𝗩𝗼𝘂𝗰𝗵𝗲𝗿 𝗚𝗮𝗺𝗲",
 rows: [
 {title: "Garena Shell Murah", rowId: "topup_garena_shell", description: "Menampilkan list harga Voucher Garena Shell"},
 {title: "Garena Free Fire", rowId: "topup_diamond_ff", description: "Menampilkan list harga Diamond FF"},
 {title: "Mobile Legends", rowId: "topup_diamond_ml", description: "Menampilkan list harga Diamond ML"},
 ]},
-{title: " ",
+{title: "𝗧𝗼𝗸𝗲𝗻 𝗟𝗶𝘀𝘁𝗿𝗶𝗸",
 rows: [
 {title: "Token PLN Murah", rowId: "topup_token_pln", description: "Menampilkan list harga Token PLN"},
 ]},
-{title: " ",
+{title: "𝗖𝗼𝗻𝘃𝗲𝗿𝘁 𝗦𝗮𝗹𝗱𝗼",
 rows: [
 {title: "Saldo Ovo", rowId: "topup_saldo_ovo", description: "Menampilkan list harga Saldo Ovo"},
 {title: "Saldo Dana", rowId: "topup_saldo_dana", description: "Menampilkan list harga Saldo Dana"},
@@ -3681,7 +3681,7 @@ rows: [
 {title: "Saldo LinkAja", rowId: "topup_saldo_linkaja", description: "Menampilkan list harga Saldo Linkaja"},
 {title: "Saldo ShopeePay", rowId: "topup_saldo_shoope", description: "Menampilkan list harga Saldo ShopeePay"},
 ]},
-{title: " ",
+{title: "𝗞𝘂𝗼𝘁𝗮 𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁",
 rows: [
 {title: "Internet XL", rowId: prefix+"topup_internet_xl", description: "Menampilkan list harga Internet XL"},
 {title: "Internet Axis", rowId: prefix+"topup_internet_axis", description: "Menampilkan list harga Internet Axis"},
@@ -3689,7 +3689,7 @@ rows: [
 {title: "Internet Indosat", rowId: prefix+"topup_internet_indosat", description: "Menampilkan list harga Internet ndosat"},
 {title: "Internet Telkomsel", rowId: prefix+"topup_internet_telkomsel", description: "Menampilkan list harga Internet Telkomsel"},
 ]},
-{title: " ",
+{title: "𝗣𝘂𝗹𝘀𝗮 𝗧𝗿𝗮𝗻𝘀𝗳𝗲𝗿",
 rows: [
 {title: "Pulsa XL", rowId: "topup_pulsa_xl", description: "Menampilkan list harga Pulsa XL"},
 {title: "Pulsa Axis", rowId: "topup_pulsa_axis", description: "Menampilkan list harga Pulsa Axis"},
@@ -3697,17 +3697,17 @@ rows: [
 {title: "Pulsa Indosat", rowId: "topup_pulsa_indosat", description: "Menampilkan list harga Pulsa Indosat"},
 {title: "Pulsa Telkomsel", rowId: "topup_pulsa_telkomsel", description: "Menampilkan list harga Pulsa Telkomsel"},
 ]},
-{title: " & ",
+{title: "𝗣𝗿𝗲𝗺𝗶𝘂𝗺 & 𝗦𝗲𝘄𝗮𝗯𝗼𝘁",
 rows: [
-{title: "Premium", rowId: prefix+"list_premium", description: "Menampilkan list harga premium"},
-{title: "Sewa Bot", rowId: prefix+"join", description: "Rp.10.000/Minggu"},
+{title: "Premium", rowId: prefix+"buyprem", description: "Menampilkan list harga premium"},
+{title: "Sewa Bot", rowId: prefix+"gcbot", description: "Rp.10.000/Minggu"},
 ]}
 ]
 let isian = `List produk yang kami
 sediakan, silahkan pilih salah satu.`
 const button_topup = {
 text: isian,
-buttonText: " ",
+buttonText: "ᴘɪʟɪʜ ᴘʀᴏᴅᴜᴋ",
 sections
 }
 var object_buy = {
@@ -3725,18 +3725,18 @@ produk_topup: ''
 }
 }
 fs.writeFile(topupPath + sender.split("@")[0] + ".json", JSON.stringify(object_buy, null, 3), () => {
-conn.sendMessage(from, button_topup)
+ronzz.sendMessage(from, button_topup)
 })
 } else {
 var buttonMessage = {
-text: `Hey, sepertinya kamu masih ada proses yang belum diselesaikan, Ingin batal? click batal dibawah `,
-footer: footer,
+text: `Hey, sepertinya kamu masih ada proses yang belum diselesaikan, Ingin batal? click batal dibawah 👇🏻`,
+footer: setting.footer,
 buttons: [
 { buttonId: 'batal_order', buttonText: {displayText: 'Batal'}, type: 1},
 ],
 headerType: 1
 }
-conn.sendMessage(from, buttonMessage, {quoted:msg})
+ronzz.sendMessage(from, buttonMessage, {quoted:msg})
 }
 break
 case 'listharga':{
@@ -3760,24 +3760,24 @@ rows: [
 ]},
 {title: "Premium & Sewabot",
 rows: [
-{title: "Premium", rowId: prefix+"list_premium", description: "Menampilkan list harga premium"},
-{title: "Sewa Bot", rowId: prefix+"join", description: "Rp.10.000/Minggu"},
+{title: "Premium", rowId: prefix+"buyprem", description: "Menampilkan list harga premium"},
+{title: "Sewa Bot", rowId: prefix+"gcbot", description: "Rp.10.000/Minggu"},
 ]}
 ]
 let isian = `List harga produk yang kami
 sediakan, silahkan pilih salah satu.`
 const listMessage = {
 text: isian,
-buttonText: 's ',
+buttonText: 'ʟɪsᴛ ʜᴀʀɢᴀ',
 sections
 }
-conn.sendMessage(from, listMessage)
+ronzz.sendMessage(from, listMessage)
 }
 break
 case 'convert_list':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 const sections = [
-{title: " ",
+{title: "𝗖𝗼𝗻𝘃𝗲𝗿𝘁 𝗦𝗮𝗹𝗱𝗼",
 rows: [
 {title: "Saldo Ovo", rowId: prefix+"list_saldo_ovo", description: "Menampilkan list harga Saldo Ovo"},
 {title: "Saldo Dana", rowId: prefix+"list_saldo_dana", description: "Menampilkan list harga Saldo Dana"},
@@ -3790,16 +3790,16 @@ let isian = `List harga produk yang kami
 sediakan, silahkan pilih salah satu.`
 const listMessage = {
 text: isian,
-buttonText: 's ',
+buttonText: 'ʟɪsᴛ ʜᴀʀɢᴀ',
 sections
 }
-conn.sendMessage(from, listMessage)
+ronzz.sendMessage(from, listMessage)
 }
 break
 case 'kuota_list':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 const sections = [
-{title: " ",
+{title: "𝗞𝘂𝗼𝘁𝗮 𝗜𝗻𝘁𝗲𝗿𝗻𝗲𝘁",
 rows: [
 {title: "Internet XL", rowId: prefix+"list_internet_xl", description: "Menampilkan list harga Internet XL"},
 {title: "Internet Axis", rowId: prefix+"list_internet_axis", description: "Menampilkan list harga Internet Axis"},
@@ -3812,16 +3812,16 @@ let isian = `List harga produk yang kami
 sediakan, silahkan pilih salah satu.`
 const listMessage = {
 text: isian,
-buttonText: 's ',
+buttonText: 'ʟɪsᴛ ʜᴀʀɢᴀ',
 sections
 }
-conn.sendMessage(from, listMessage)
+ronzz.sendMessage(from, listMessage)
 }
 break
 case 'pulsa_list':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 const sections = [
-{title: " ",
+{title: "𝗣𝘂𝗹𝘀𝗮 𝗧𝗿𝗮𝗻𝘀𝗳𝗲𝗿",
 rows: [
 {title: "Pulsa XL", rowId: prefix+"list_harga_xl", description: "Menampilkan list harga Pulsa XL"},
 {title: "Pulsa Axis", rowId: prefix+"list_harga_axis", description: "Menampilkan list harga Pulsa Axis"},
@@ -3837,7 +3837,7 @@ text: isian,
 buttonText: "List Harga Produk",
 sections
 }
-conn.sendMessage(from, listMessage)
+ronzz.sendMessage(from, listMessage)
 }
 break
 
@@ -3847,7 +3847,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -3868,7 +3868,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -3878,7 +3878,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -3899,7 +3899,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -3909,7 +3909,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -3930,7 +3930,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -3940,7 +3940,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -3961,7 +3961,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -3971,7 +3971,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -3992,7 +3992,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4004,7 +4004,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4025,7 +4025,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4035,7 +4035,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4056,7 +4056,7 @@ listff.sort(regExcomp)
 for (let i of listff) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4066,7 +4066,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4087,7 +4087,7 @@ listml.sort(regeXcomp)
 for (let i of listml) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4099,7 +4099,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4120,7 +4120,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4130,7 +4130,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4151,7 +4151,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n*Note :* ${i.note}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4161,7 +4161,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4182,7 +4182,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4192,7 +4192,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4213,7 +4213,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4223,7 +4223,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4244,7 +4244,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4256,7 +4256,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4277,7 +4277,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4287,7 +4287,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4308,7 +4308,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4318,7 +4318,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4339,7 +4339,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4349,7 +4349,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4370,7 +4370,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4380,7 +4380,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4401,7 +4401,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4413,7 +4413,7 @@ axios({
 method: 'POST',
 url: 'https://www.atlantic-pedia.co.id/api/pulsa',
 data: qs.stringify({
-key: apikeyAntlatic,
+key: setting.apikey_antlatic,
 action: "services"
 })
 }).then(res => {
@@ -4434,7 +4434,7 @@ listaov.sort(regeXcomp)
 for (let i of listaov) {
 teks += `*Title :* ${i.name}\n*Harga :* Rp${toRupiah(i.price)}\n*Status :* ${i.status}\n\n`
 }
-teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ \n_Empty : Stok Habis_ `
+teks += `_ingin melakukan topup?_\n_ketik:_ *#topup*\n\n_ingin melakukan isi saldo?_\n_ketik:_ *#deposit*\n\n_ingin melihat produk topup?_\n_ketik:_ *#listharga*\n\n*Penjelasan :*\n_Available : Stok Ready_ ✅\n_Empty : Stok Habis_ ❎`
 reply(teks)
 })
 }
@@ -4449,7 +4449,7 @@ let pesan_temanh = q.split("|")[2] ? q.split("|")[2] : ''
 let nomor_pengirimnyah = sender.split("@")[0]
 if (pesan_temanh.length <1) return reply(`Harus di isi semua !!\nex : ${prefix+command} 62857xxx|nama|hallo`)
 if (!q) return reply(`Format Fitur Confes / Kirim pesan rahasia ke seseorang lewat bot\n\n_Example_\n${prefix+command} Nomor|Pengirim|Pesan\n\n_Contoh_\n${prefix+command} 628817839722|Crush|Hello\n\n*Note :*\nBerawal Dari 628xxx Tanpa Spasi`)
-ronzz.sendMessage(`${nomor_temanh}@s.whatsapp.net`, { text: `[ *PESAN-RAHASIA* ]\n_Hi ada confess nih buat kamu_\n\n*dari :* ${ini_nama_kamu}\n*pesan :* ${pesan_temanh}\n\n_Pesan ini di tulis oleh seseorang,_\n_bot hanya menyampaikan saja._\n`, footer: 'klik button untuk membalas pesan', buttons: [{buttonId: `${prefix}balas_confes ${nomor_pengirimnyah}@s.whatsapp.net|${nomor_temanh}@s.whatsapp.net`, buttonText: {displayText: 'Balas'}, type: 1}],headerType: 1 })
+ronzz.sendMessage(`${nomor_temanh}@s.whatsapp.net`, { text: `━━━[ *PESAN-RAHASIA* ]━━━\n_Hi ada confess nih buat kamu_\n\n*dari :* ${ini_nama_kamu}\n*pesan :* ${pesan_temanh}\n\n_Pesan ini di tulis oleh seseorang,_\n_bot hanya menyampaikan saja._\n━━━━━━━━━━━━━━━━`, footer: 'Klik button untuk membalas pesan', buttons: [{buttonId: `${prefix}balas_confes ${nomor_pengirimnyah}@s.whatsapp.net|${nomor_temanh}@s.whatsapp.net`, buttonText: {displayText: 'Balas✍️'}, type: 1}],headerType: 1 })
 reply('Sukses mengirimkan pesan ke dia.')
 }
 addCmd(command, 1, db_dashboard)
@@ -4474,8 +4474,8 @@ let pesan_teman = q.split('|')[2] ? q.split('|')[2] : ''
 if (pesan_teman.length <1) return reply(`Harus di isi semua !!\nex : ${prefix+command} 62881xxx|nama|hallo`)
 let nomor_pengirimnya = sender.split("@")[0]
 let text_menfess = `_Hi ada menfess nih buat kamu_\n\n*Dari :* ${nama_pengirim}\n*Pesan :* ${pesan_teman}\n\n_Pesan ini di tulis oleh seseorang,_\n_bot hanya menyampaikan saja._`
-let button_menfes = [{ buttonId: `${prefix}balas_menfes ${nomor_pengirimnya}@s.whatsapp.net|${nomor_teman}@s.whatsapp.net`, buttonText: { displayText: "Balas" }, type: 1 }]
-const ini_mess_menfess = { image: await reSize(fs.readFileSync(menfess), 300, 200), caption: text_menfess, footer: 'klik button untuk membalas pesan', buttons: button_menfes, headerType: 4 }
+let button_menfes = [{ buttonId: `${prefix}balas_menfes ${nomor_pengirimnya}@s.whatsapp.net|${nomor_teman}@s.whatsapp.net`, buttonText: { displayText: "Balas✍️" }, type: 1 }]
+const ini_mess_menfess = { image: await reSize(fs.readFileSync(menfess), 300, 200), caption: text_menfess, footer: 'Klik button untuk membalas pesan', buttons: button_menfes, headerType: 4 }
 ronzz.sendMessage(`${nomor_teman}@s.whatsapp.net`, ini_mess_menfess)
 reply(`Sukses Mengirimkan Pesan Menfess`)
 }
@@ -4513,7 +4513,7 @@ break
 case 'spamcall':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam call ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/spam/call1?apikey=${lolkey}&nomor=${q}`)
@@ -4525,7 +4525,7 @@ break
 case 'spamsms1':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam1?apikey=${lolkey}&nomor=${q}`)
@@ -4537,7 +4537,7 @@ break
 case 'spamsms2':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam2?apikey=${lolkey}&nomor=${q}`)
@@ -4549,7 +4549,7 @@ break
 case 'spamsms3':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam3?apikey=${lolkey}&nomor=${q}`)
@@ -4561,7 +4561,7 @@ break
 case 'spamsms4':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam4?apikey=${lolkey}&nomor=${q}`)
@@ -4573,7 +4573,7 @@ break
 case 'spamsms5':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam5?apikey=${lolkey}&nomor=${q}`)
@@ -4585,7 +4585,7 @@ break
 case 'spamsms6':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam6?apikey=${lolkey}&nomor=${q}`)
@@ -4597,7 +4597,7 @@ break
 case 'spamsms7':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam7?apikey=${lolkey}&nomor=${q}`)
@@ -4609,7 +4609,7 @@ break
 case 'spamsms8':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (cekUser("premium", sender) !== true) return reply(mess.prem)
-if (!q) return reply(`Format salah \n\nContoh :\n${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n${prefix+command} 628817839722`)
 if ([`${ownerNomer}`,"628817839722","16784037437"].includes(q)) return reply('Tidak boleh spam sms ke owner.')
 if (![`${ownerNomer}`,"628817839722","16784037437"].includes(q)) {
 var data = await fetchJson(`https://api.lolhuman.xyz/api/sms/spam8?apikey=${lolkey}&nomor=${q}`)
@@ -4640,7 +4640,7 @@ break
 case 'ttp':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (args.length < 1) return reply(`Ex : ${prefix+command} Teks\n\nContoh :\n${prefix+command} ZiahBotz`)
-if (q.length > 75) return reply(`Teksnya Kepanjangan Kak ${cekUser("name", sender)}`)
+if (q.length > 75) return reply(`Teksnya Kepanjangan Kak ${cekUser("name", sender)}🙏`)
 reply(mess.wait)
 getBuffer(`https://api.xteam.xyz/ttp?file&text=${encodeURIComponent(q)}`)
 .then(res => {
@@ -4654,7 +4654,7 @@ break
 case 'attp':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (args.length < 1) return reply(`Ex : ${prefix+command} Teks\n\nContoh :\n${prefix+command} RonzzOfc`)
-if (q.length > 75) return reply(`Teksnya Kepanjangan Kak ${cekUser("name", sender)}`)
+if (q.length > 75) return reply(`Teksnya Kepanjangan Kak ${cekUser("name", sender)}🙏`)
 reply(mess.wait)
 getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
 .then(res => {
@@ -4799,7 +4799,7 @@ break
 
 case 'emojimix': {
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-if (!q) return reply(`Example :\n${prefix+command} +`)
+if (!q) return reply(`Example :\n${prefix+command} 😅+🤭`)
 var mytext = body.slice(10)
 let [emoji1, emoji2] = mytext.split`+`
 let anu = await fetchJson(`https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`)
@@ -4841,7 +4841,7 @@ case 'tinyurl':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Link\n\nContoh :\n${prefix+command} https://ronzxapis.my.id`) 
 var ronzz = await fetchJson(`${api}/api/shortlink/tinyurl?url=${q}&apikey=${apikey}`) 
-let teksnya = "* Shorts Link Tinyurl *\n"
+let teksnya = "*Shorts Link Tinyurl*\n"
 teksnya += `*Sebelum :* ${q}\n`
 teksnya += `*Sesudah :* ${ronzz.result}`
 reply(teksnya)
@@ -4853,7 +4853,7 @@ case 'cuttly':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Link\n\nContoh :\n${prefix+command} https://ronzxapis.my.id`) 
 var ronzz = await fetchJson(`${api}/api/shortlink/cuttly?url=${q}&apikey=${apikey}`) 
-let teksnya = "* Shorts Link Cuttly *\n"
+let teksnya = "*Shorts Link Cuttly*\n"
 teksnya += `*Sebelum :* ${q}\n`
 teksnya += `*Sesudah :* ${ronzz.result}`
 reply(teksnya)
@@ -4865,7 +4865,7 @@ case 'bitly':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Link\n\nContoh :\n${prefix+command} https://ronzxapis.my.id`) 
 var ronzz = await fetchJson(`${api}/api/shortlink/bitly?url=${q}&apikey=${apikey}`) 
-let teksnya = "* Shorts Link Bitly *\n"
+let teksnya = "*Shorts Link Bitly*\n"
 teksnya += `*Sebelum :* ${q}\n`
 teksnya += `*Sesudah :* ${ronzz.result}`
 reply(teksnya)
@@ -4920,12 +4920,12 @@ break
 
 case 'saldo':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-reply(`* CHECK YOUR INFO *
+reply(`*━━ CHECK YOUR INFO ━━*
 
- _� *Name:* ${cekUser("name", sender)}_
- _� *Resi:* ${cekUser("resi", sender)}_
- _� *Nomer:* ${sender.split('@')[0]}_
- _� *Saldo:* Rp${toRupiah(cekSaldo(sender, db_saldo))}_
+ _• *Name:* ${cekUser("name", sender)}_
+ _• *Resi:* ${cekUser("resi", sender)}_
+ _• *Nomer:* ${sender.split('@')[0]}_
+ _• *Saldo:* Rp${toRupiah(cekSaldo(sender, db_saldo))}_
 
 *Note :*
 _saldo hanya bisa untuk topup_
@@ -4958,7 +4958,7 @@ description: "Status : False"
 }
 ]
 var dep_but = {
-text: `Hai *${cekUser("name", sender)}* ${ucapanWaktu} \ningin melakukan deposit saldo? silahkan pilih payment yang tersedia`,
+text: `Hai *${cekUser("name", sender)}* ${ucapanWaktu} 👋\ningin melakukan deposit saldo? silahkan pilih payment yang tersedia☺`,
 buttonText: "Pilih disini",
 sections: [ { title: "PAYMENT DEPOSIT", rows } ]
 }
@@ -4967,7 +4967,7 @@ ronzz.sendMessage(from, dep_but)
 break
 
 case 'payment_gopay':
-reply('Payment Gopay belum tersedia\nSilahkan pilih payment lain ya')
+reply('Payment Gopay belum tersedia\nSilahkan pilih payment lain ya☺')
 break
 
 case 'bukti':
@@ -4978,14 +4978,14 @@ await ronzz.downloadAndSaveMediaMessage(msg, "image", `./options/deposit/${sende
 let oke_bang = fs.readFileSync(`./options/deposit/${sender.split('@')[0]}.jpg`)
 let data_depo = JSON.parse(fs.readFileSync(depositPath + sender.split("@")[0] + ".json"))
 
-let caption_bukti =` *DEPOSIT USER* 
-ID Resi: ${data_depo.ID}
-Nomer: @${data_depo.number.split('@')[0]}
-Payment: ${data_depo.payment}
-Tanggal: ${data_depo.date.split(' ')[0]}
-Jumlah Deposit: Rp${toRupiah(data_depo.data.amount_deposit)}
-Pajak: Rp2.500
-Total Bayar: Rp${toRupiah(data_depo.data.amount_deposit+2500)}
+let caption_bukti =`「 *DEPOSIT USER* 」
+⭔ID Resi: ${data_depo.ID}
+⭔Nomer: @${data_depo.number.split('@')[0]}
+⭔Payment: ${data_depo.payment}
+⭔Tanggal: ${data_depo.date.split(' ')[0]}
+⭔Jumlah Deposit: Rp${toRupiah(data_depo.data.amount_deposit)}
+⭔Pajak: Rp2.500
+⭔Total Bayar: Rp${toRupiah(data_depo.data.amount_deposit+2500)}
 
 Ada yang deposit nih kak, coba dicek saldonya, jika sudah masuk konfirmasi dengan klik button *Accept*`
 
@@ -5002,7 +5002,7 @@ buttons: bukti_button,
 headerType: 5 
 }
 ronzz.sendMessage(`${ownerNomer}`, bukti_bayar)
-reply(`Mohon tunggu ya kak, sampai di acc oleh owner `)
+reply(`Mohon tunggu ya kak, sampai di acc oleh owner ☺`)
 fs.unlinkSync(`./options/deposit/${sender.split('@')[0]}.jpg`)
 break
 
@@ -5011,13 +5011,13 @@ if (!isOwner) return reply('Fitur ini khusus owner')
 let orang = q
 let data_deposit = JSON.parse(fs.readFileSync(depositPath + orang + '.json'))
 addSaldo(data_deposit.number, Number(data_deposit.data.amount_deposit), db_saldo)
-var text_sukses = ` *DEPOSIT SUKSES* 
-ID : ${data_deposit.ID}
-Name ${cekUser("name", sender)}
-Nomer: ${data_deposit.number.split('@')[0]}
-Payment: ${data_deposit.payment}
-Tanggal: ${data_deposit.date.split(' ')[0]}
-Jumlah Deposit: Rp${toRupiah(data_deposit.data.amount_deposit)}`
+var text_sukses = `「 *DEPOSIT SUKSES* 」
+⭔ID : ${data_deposit.ID}
+⭔Name ${cekUser("name", sender)}
+⭔Nomer: ${data_deposit.number.split('@')[0]}
+⭔Payment: ${data_deposit.payment}
+⭔Tanggal: ${data_deposit.date.split(' ')[0]}
+⭔Jumlah Deposit: Rp${toRupiah(data_deposit.data.amount_deposit)}`
 reply(`${text_sukses}\n`)
 ronzz.sendMessage(data_deposit.number, { text: `${text_sukses}\n\n_Deposit kamu telah dikonfirmasi oleh admin, silahkan cek saldo dengan cara ketik #saldo_`})
 fs.unlinkSync(depositPath + data_deposit.number.split('@')[0] + ".json")
@@ -5037,7 +5037,7 @@ break
 case 'order':
 case 'caraorder':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-let capp = `*Hallo _${cekUser("name", sender)}_*\n*Berikut Ini Cara Order Sosmed Shop*\n\n*Order Followers :*\n_Example_\n_${prefix}followers jumlah|username [ tanpa (@) ]_\n\n_Contoh_\n_${prefix}followers 500|RonzzOfc_\n\n*Order View :*\nExample_\n_${prefix}view jumlah|link_\n\n_Contoh_\n_${prefix}view 10000|https://vm.tiktok.com/xxxxxxx_\n\n*Order Like :*\n_Example_\n_${prefix}like jumlah|link_\n\n_Contoh_\n_${prefix}like 10000|https://www.instagram.com/p/xxxxxxx_\n\nSekian penjelasan cara order\nSemoga anda paham dengan penjelasan ini\nbeli = paham`
+let capp = `*Hallo _${cekUser("name", sender)}_*\n*Berikut Ini Cara Order Sosmed Shop*\n\n*Order Followers :*\n_Example_\n_${prefix}followers jumlah|username [ tanpa (@) ]_\n\n_Contoh_\n_${prefix}followers 500|RonzzOfc_\n\n*Order View :*\nExample_\n_${prefix}view jumlah|link_\n\n_Contoh_\n_${prefix}view 10000|https://vm.tiktok.com/xxxxxxx_\n\n*Order Like :*\n_Example_\n_${prefix}like jumlah|link_\n\n_Contoh_\n_${prefix}like 10000|https://www.instagram.com/p/xxxxxxx_\n\nSekian penjelasan cara order\nSemoga anda paham dengan penjelasan ini☺\nbeli = paham`
 ronzz.sendMessage(from, {text: capp}, {quoted:msg})
 }
 break
@@ -5061,7 +5061,7 @@ description: `${x.desc}`
 var listMsg = {
 text: `Pilih layanan sesuai dengan yang ingin anda beli!\njika anda membeli followers maka pilih followers\ndiharapkan anda sudah faham.`,
 buttonText: 'Click Here!',
-footer: `${botName} � 2022`,
+footer: `${botName} © 2022`,
 mentions: [sender],
 sections: [{
 title: 'SOSMED - SHOP', rows: arr_wors
@@ -5108,7 +5108,7 @@ if (feta.status == false) {
 reply(`*Maaf orderan gagal di buat*\n\nPermasalahan :\n${feta.data.msg} atau Cara order anda salah\n\nDiharapkan sudah faham jika ingin membeli\njika masih tidak faham silahkan ketik ${prefix}owner!\n`)
 } else {
 let idpes = feta.data.order_id
-let cap = `Hay *${cekUser("name", sender)} ,* Terimakasih Telah Order di Sosmed Shop!\nScan QR diatas untuk membayar! MENGGUNAKAN QRIS.\n\n*Id Pesanan Anda :* ${feta.data.order_id}\n*Target :* ${targ}\n*Jumlah Pesanan :* ${jumlah}\n*Total Harga Pesanan :* Rp${toRupiah(feta.data.amount)}\n*Status Orderan :* ${feta.data.status}\n\n_Info lebih lanjut klik button dibawah._`
+let cap = `Hay *${cekUser("name", sender)} 👋,* Terimakasih Telah Order di Sosmed Shop!\nScan QR diatas untuk membayar! MENGGUNAKAN QRIS.\n\n*Id Pesanan Anda :* ${feta.data.order_id}\n*Target :* ${targ}\n*Jumlah Pesanan :* ${jumlah}\n*Total Harga Pesanan :* Rp${toRupiah(feta.data.amount)}\n*Status Orderan :* ${feta.data.status}\n\n_Info lebih lanjut klik button dibawah._`
 let buto = [{
 buttonId: `${prefix}cekstatus ${feta.data.order_id}`,
 buttonText: {
@@ -5119,7 +5119,7 @@ type: 1
 ronzz.sendMessage(from, {
 caption: cap, image: {
 url: feta.data.qris
-}, buttons: buto, footer: `${botName} � 2022`
+}, buttons: buto, footer: `${botName} © 2022`
 })
 }
 console.log(feta)
@@ -5185,9 +5185,9 @@ let  jsonData = JSON.parse(data);
 let randIndex = Math.floor(Math.random() * jsonData.length);
 let json = jsonData[randIndex];
 let randCowo= await getBuffer(json.cowo)
-ronzz.sendMessage(from, { image: randCowo, caption: '*Ini yang cowo*'' }, { quoted: msg })
+ronzz.sendMessage(from, { image: randCowo, caption: '*Ini yang cowo🙏*' }, { quoted: msg })
 let randCewe = await getBuffer(json.cewe)
-ronzz.sendMessage(from, { image: randCewe, caption: '*Ini yang cewe*' }, { quoted: msg })
+ronzz.sendMessage(from, { image: randCewe, caption: '*Ini yang cewe🙏*' }, { quoted: msg })
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -5195,51 +5195,51 @@ break
 case 'animelink':
 case 'linkanime':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-let teks =`*${cekUser("name", sender)}* Ternyata Wibu
-   *Anime* 
- https://kusonime.com
- https://anoboy.media
- https://AniFans.club
- https://oploverzz.net
- https://Otakudesu.moe
- https://neonime.site
- https://gomunime.online
- https://samehadaku.vip
- https://drivenime.com
- https://Anitoki.xyz
- https://Anime-indo.cc
- https://otakudere.net
- https://huntersekaisub.blogspot.com
- https://o.anibatch.me
- https://animeku.me
- https://anikyojin.net
- https://samehadaku.vip
- https://riie.jp
- https://asta.zonawibu.cc
- https://anitoki.web.id
- https://anime-indo.co
- https://meownime.moe
- https://meownime.ltd
- https://miownime.com
- https://nimegami.com
- https://anisubindo.video
- https://wibudesu.com
- https://shirainime.com
- https://animeku.com
- https://naruchiha.id
- https://gantzid.com
- https://animekompi.web.id
- https://www.pandanime.online
- https://Koenime.com
- https://moenime.web.id
- https://nontonanimeid.com
- https://pendekarsubs.us
- https://melodysubs.net
- https://pucuktranslation.pw
- https://kazefuri.net
- https://haruzorasubs.net
- https://myanimelist.net
-`
+let teks =`*${cekUser("name", sender)}* Ternyata Wibu🗿😆
+╭───❏  「 *Anime* 」
+├ https://kusonime.com
+├ https://anoboy.media
+├ https://AniFans.club
+├ https://oploverzz.net
+├ https://Otakudesu.moe
+├ https://neonime.site
+├ https://gomunime.online
+├ https://samehadaku.vip
+├ https://drivenime.com
+├ https://Anitoki.xyz
+├ https://Anime-indo.cc
+├ https://otakudere.net
+├ https://huntersekaisub.blogspot.com
+├ https://o.anibatch.me
+├ https://animeku.me
+├ https://anikyojin.net
+├ https://samehadaku.vip
+├ https://riie.jp
+├ https://asta.zonawibu.cc
+├ https://anitoki.web.id
+├ https://anime-indo.co
+├ https://meownime.moe
+├ https://meownime.ltd
+├ https://miownime.com
+├ https://nimegami.com
+├ https://anisubindo.video
+├ https://wibudesu.com
+├ https://shirainime.com
+├ https://animeku.com
+├ https://naruchiha.id
+├ https://gantzid.com
+├ https://animekompi.web.id
+├ https://www.pandanime.online
+├ https://Koenime.com
+├ https://moenime.web.id
+├ https://nontonanimeid.com
+├ https://pendekarsubs.us
+├ https://melodysubs.net
+├ https://pucuktranslation.pw
+├ https://kazefuri.net
+├ https://haruzorasubs.net
+├ https://myanimelist.net
+╰──❏`
 reply2(teks)
 }
 addCmd(command, 1, db_dashboard)
@@ -5255,7 +5255,7 @@ let gam = await getBuffer(result.gambar)
 let but = [
 { buttonId: `${prefix}quotesanime`, buttonText: { displayText: 'Next Quotes' }, type: 1 }
 ]
-ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(gam, 300, 150) }, caption: `_${result.quotes}_\n\nBy *${result.karakter}*, ${result.anime}\n\n*_- ${result.up_at}_*`, footer: `${botName} � 2022`, buttons: but }, { quoted: msg })
+ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(gam, 300, 150) }, caption: `_${result.quotes}_\n\nBy *${result.karakter}*, ${result.anime}\n\n*_- ${result.up_at}_*`, footer: `${botName} © 2022`, buttons: but }, { quoted: msg })
 })
 }
 addCmd(command, 1, db_dashboard)
@@ -5266,14 +5266,14 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Daerah\n\nContoh :\n${prefix+command} Cirebon`)
 let data = await sholat(q)
 let txt = '*Jadwal Shalat*\n\n'
-txt += `*� Daerah :* ${q}\n\n`
-txt += `*� Date :* ${moment(new Date()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss DD/MM/YYYY')}\n`
-txt += `*� Imsak :* ${data.result.imsak}\n`
-txt += `*� Subuh :* ${data.result.shubuh}\n`
-txt += `*� Dzuhur :* ${data.result.dzuhur}\n`
-txt += `*� Ashar :* ${data.result.ashar}\n`
-txt += `*� Magrib :* ${data.result.maghrib}\n`
-txt += `*� Isya :* ${data.result.isya}
+txt += `*• Daerah :* ${q}\n\n`
+txt += `*• Date :* ${moment(new Date()).tz('Asia/Jakarta').locale('id').format('HH:mm:ss DD/MM/YYYY')}\n`
+txt += `*• Imsak :* ${data.result.imsak}\n`
+txt += `*• Subuh :* ${data.result.shubuh}\n`
+txt += `*• Dzuhur :* ${data.result.dzuhur}\n`
+txt += `*• Ashar :* ${data.result.ashar}\n`
+txt += `*• Magrib :* ${data.result.maghrib}\n`
+txt += `*• Isya :* ${data.result.isya}`
 reply(txt)
 }
 addCmd(command, 1, db_dashboard)
@@ -5285,7 +5285,7 @@ const res = await yogipw.servermc()
 let teks = "*| SERVER MC INDONESIA |*\n\nhttps://minecraftpocket-servers.com/country/indonesia/\n\n"
 let no = 1
 for (let i of res){
-teks += ` Server Ke ${no++}\nip : ${i.ip}\nport : ${i.port}\nversi : ${i.versi}\nplayer : ${i.player}\n\n`
+teks += `▸ Server ke ${no++}\nIp : ${i.ip}\nPort : ${i.port}\nVersi : ${i.versi}\nPlayer : ${i.player}\n\n`
 }
 reply(teks)
 }
@@ -5294,10 +5294,10 @@ break
 
 case 'ayatkursi': case 'ayatqursi':
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-reply(`* Ayat Kursi *
+reply(`*Ayat Kursi*
 
-                                                 
-�Alloohu laa ilaaha illaa huwal hayyul qoyyuum, laa ta�khudzuhuu sinatuw walaa naum. Lahuu maa fissamaawaati wa maa fil ardli man dzal ladzii yasyfa�u �indahuu illaa biidznih, ya�lamu maa baina aidiihim wamaa kholfahum wa laa yuhiithuuna bisyai�im min �ilmihii illaa bimaa syaa� wasi�a kursiyyuhus samaawaati wal ardlo walaa ya�uuduhuu hifdhuhumaa wahuwal �aliyyul �adhiim.�
+اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ وَلَا يَئُودُهُ حِفْظُهُمَا وَهُوَ الْعَلِيُّ الْعَظِيمُ
+“Alloohu laa ilaaha illaa huwal hayyul qoyyuum, laa ta’khudzuhuu sinatuw walaa naum. Lahuu maa fissamaawaati wa maa fil ardli man dzal ladzii yasyfa’u ‘indahuu illaa biidznih, ya’lamu maa baina aidiihim wamaa kholfahum wa laa yuhiithuuna bisyai’im min ‘ilmihii illaa bimaa syaa’ wasi’a kursiyyuhus samaawaati wal ardlo walaa ya’uuduhuu hifdhuhumaa wahuwal ‘aliyyul ‘adhiim.”
 
 Artinya:
 Allah, tidak ada Tuhan (yang berhak disembah) melainkan Dia Yang Hidup kekal lagi terus menerus mengurus (makhluk-Nya), tidak mengantuk dan tidak tidur. Kepunyaan-Nya apa yang di langit dan di bumi. Tiada yang dapat memberi syafa'at di sisi Allah tanpa izin-Nya.
@@ -5319,10 +5319,10 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Surah\n\nContoh :\n${prefix+command} Al-Fatihah`)
 let data = await tafsirsurah(q)
 let teks = `*TAFSIR SURAH*
-Surah : ${data.result.surah}
-Tafsir : ${data.result.tafsir}
-Type : ${data.result.type}
-Source : ${data.result.source}`
+⭔Surah : ${data.result.surah}
+⭔Tafsir : ${data.result.tafsir}
+⭔Type : ${data.result.type}
+⭔Source : ${data.result.source}`
 reply(teks)
 }
 addCmd(command, 1, db_dashboard)
@@ -5451,7 +5451,7 @@ case 'd': case 'done':
 if (!isGroup) return ('Hanya Dapat Digunakan Di Group')
 if (!isOwner && !isGroupAdmins) return ('Hanya Bisa Digunakan Oleh Admin')
 if (!isQuotedMsg) return ('Reply Pesanannya!')
-let sukses = ` *TRANSAKSI BERHASIL* \n\n\`\`\` TANGGAL : ${tanggal}\n JAM : ${jamwib}\n STATUS: Berhasil\`\`\`\n\nTerimakasih @${quotedMsg.sender.split("@")[0]} Next Order ya`
+let sukses = `「 *TRANSAKSI BERHASIL* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM : ${jamwib}\n✨ STATUS: Berhasil\`\`\`\n\nTerimakasih @${quotedMsg.sender.split("@")[0]} Next Order ya🙏`
 const getTextD = getTextSetDone(from, set_done);
 if (getTextD !== undefined) {
 mentions(getTextD.replace('pesan', quotedMsg.chats).replace('nama', quotedMsg.sender.split("@")[0]).replace('jam', jamwib).replace('tanggal', tanggal), [quotedMsg.sender], true);
@@ -5466,7 +5466,7 @@ case 'p': case 'proses':
 if (!isGroup) return ('Hanya Dapat Digunakan Gi Group')
 if (!isOwner && !isGroupAdmins) return ('Hanya Bisa Digunakan Oleh Admin')
 if (!isQuotedMsg) return ('Reply Pesanannya!')
-let proses = ` *TRANSAKSI PENDING* \n\n\`\`\` TANGGAL : ${tanggal}\n JAM : ${jamwib}\n STATUS: Pending\`\`\`\n\n Catatan :\n${quotedMsg.chats}\n\nPesanan @${quotedMsg.sender.split("@")[0]} sedang di proses!`
+let proses = `「 *TRANSAKSI PENDING* 」\n\n\`\`\`📆 TANGGAL : ${tanggal}\n⌚ JAM : ${jamwib}\n✨ STATUS: Pending\`\`\`\n\n📝 Catatan :\n${quotedMsg.chats}\n\nPesanan @${quotedMsg.sender.split("@")[0]} sedang di proses!`
 const getTextP = getTextSetProses(from, set_proses);
 if (getTextP !== undefined) {
 mentions(getTextP.replace('pesan', quotedMsg.chats).replace('nama', quotedMsg.sender.split("@")[0]).replace('jam', jamwib).replace('tanggal', tanggal), [quotedMsg.sender], true)
@@ -5643,9 +5643,9 @@ var number;
 if (mentionUser.length !== 0) {
 number = mentionUser[0]
 if (q && m1 && m2) {
-ronzz.sendMessage(from, {text:`* KICK TIMERS *\nSukses mengatur jadwal, @${number} akan terkick Dalam ${m2} Detik`},{quoted:msg}) 
+ronzz.sendMessage(from, {text:`*KICK TIMERS*\nSukses mengatur jadwal, @${number} akan terkick Dalam ${m2} Detik`},{quoted:msg}) 
 setTimeout( () => {
-ronzz.sendMessage(from, {text:`* KICK TIMERS *\nWaktu habis, Bye Byee!! @${number}`},{quoted:msg})
+ronzz.sendMessage(from, {text:`*KICK TIMERS*\nWaktu habis, Bye Byee!! @${number}`},{quoted:msg})
 }, anunya)
 setTimeout( () => {
 ronzz.groupParticipantsUpdate(from, [number], "remove").then(() => reply(`*Sukses...*`)).catch(() => reply(mess.error.api))
@@ -5696,9 +5696,9 @@ case 'tagall':
 if (!isGroup) return reply(mess.group)
 if (!isGroupAdmins && !isOwner) return reply(mess.admin)
 if (!q) return reply(`Teks?`)
-let teks_tagall = ` * Tag All* \n\n${q ? q : 'Tidak Ada Pesan'}\n`
+let teks_tagall = `══✪〘 *👥 Tag All* 〙✪══\n\n${q ? q : 'Tidak Ada Pesan'}\n`
 for (let mem of participants) {
-teks_tagall += ` @${mem.id.split('@')[0]}\n`
+teks_tagall += `➲ @${mem.id.split('@')[0]}\n`
 }
 ronzz.sendMessage(from, { text: teks_tagall, mentions: participants.map(a => a.id) }, { quoted: msg })
 addCmd(command, 1, db_dashboard)
@@ -5740,7 +5740,7 @@ let me = sender
 let jodoh = member[Math.floor(Math.random() * member.length)]
 let jawab = `??Jodoh mu adalah
 
-@${me.split('@')[0]}  @${jodoh.split('@')[0]}`
+@${me.split('@')[0]} ❤ @${jodoh.split('@')[0]}`
 let ments = [me, jodoh]
 let buttons = [
 { buttonId: prefix+'jodohku', buttonText: { displayText: 'Cari Lagi' }, type: 1 }
@@ -5756,9 +5756,9 @@ if (!isGroup) return reply(mess.group)
 let member = participants.map(u => u.id)
 let orang = member[Math.floor(Math.random() * member.length)]
 let jodoh = member[Math.floor(Math.random() * member.length)]
-let jawab = `Ciee yang Jadian Jangan lupa pajak jadiannya
+let jawab = `Ciee yang Jadian💖 Jangan lupa pajak jadiannya🐤
 
-@${orang.split('@')[0]}  @${jodoh.split('@')[0]}`
+@${orang.split('@')[0]} ❤ @${jodoh.split('@')[0]}`
 let menst = [orang, jodoh]
 let buttons = [
 { buttonId: prefix+'jadian', buttonText: { displayText: 'Cari Lagi' }, type: 1 }
@@ -5965,7 +5965,7 @@ teksnya += `${prefix}tiktokmp3 ${q}`
 if (!isGroup) {
 reply(mess.wait)
 }
-ronzz.sendMessage(from, { video: { url: video_tt.nowm }, caption: teksnya, footer: `${botName} � 2022`}, { quoted: fkontak })
+ronzz.sendMessage(from, { video: { url: video_tt.nowm }, caption: teksnya, footer: `${botName} © 2022`}, { quoted: fkontak })
 if (isGroup) {
 reply("Media sedang dikirim di private chat")
 }
@@ -5988,7 +5988,7 @@ reply(mess.wait)
 if (!isGroup) {
 reply(mess.wait)
 }
-ronzz.sendMessage(sender, { text: cp_ttmp3, footer: `${botName} � 2022` }, { quoted: fkontak })
+ronzz.sendMessage(sender, { text: cp_ttmp3, footer: `${botName} © 2022` }, { quoted: fkontak })
 ronzz.sendMessage(sender, { audio: { url: audio_tt.audio }, mimetype: 'audio/mpeg' }, { quoted: fkontak })
 if (isGroup) {
 reply("Media sedang dikirim di private chat")
@@ -6004,7 +6004,7 @@ let result = await fetchJson(`https://danzzapi.xyz/api/downloader/ytmp4?url=${q}
 if (!isGroup) {
 reply(mess.wait)
 }
-ronzz.sendMessage(sender, { video: { url: result.result.url }, mimetype: 'video/mp4', fileName: `${result.result.title}.mp4`, caption: `Title : ${result.result.title}\nChannel : ${result.result.channel}\nPublished : ${result.result.published}\nView : ${result.result.views}\nUrl : ${q}\n`}, { quoted: fkontak })
+ronzz.sendMessage(sender, { video: { url: result.result.url }, mimetype: 'video/mp4', fileName: `${result.result.title}.mp4`, caption: `⭔Title : ${result.result.title}\n⭔Channel : ${result.result.channel}\n⭔Published : ${result.result.published}\n⭔View : ${result.result.views}\n⭔Url : ${q}\n`}, { quoted: fkontak })
 if (isGroup) {
 reply("Media sedang dikirim di private chat")
 }
@@ -6039,7 +6039,7 @@ text_mediafire += "_Sedang mengirim file._"
 if (!isGroup) {
 reply(mess.wait)
 }
-ronzz.sendMessage(sender, { text: text_mediafire, footer: `${botName} � 2022`}, { quoted: fkontak })
+ronzz.sendMessage(sender, { text: text_mediafire, footer: `${botName} © 2022`}, { quoted: fkontak })
 ronzz.sendMessage(sender, { document : { url : result_mediafire[0].link}, fileName : result_mediafire[0].nama, mimetype: result_mediafire[0].mime }, { quoted: fkontak })
 if (isGroup) {
 reply("Media sedang dikirim di private chat")
@@ -6077,7 +6077,7 @@ reply(mess.wait)
 let anu = await pinterest(q)
 let result = anu[Math.floor(Math.random(), anu.length)]
 let gam = await getBuffer(result)
-ronzz.sendMessage(from, { image: gam, caption: `Query : ${q}\nUrl : ${result}` }, { quoted: msg })
+ronzz.sendMessage(from, { image: gam, caption: `⭔Query : ${q}\n⭔Url : ${result}` }, { quoted: msg })
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -6089,7 +6089,7 @@ reply(mess.wait)
 wallpaper(q).then( async anu =>{
 let result = anu[Math.floor(Math.random(), anu.length)]
 let gam = await getBuffer(result.image[0])
-ronzz.sendMessage(from, { image: gam, caption: `Title : ${result.title}\nSource : ${result.source}\nMedia Url : ${result.image}` }, { quoted: msg })
+ronzz.sendMessage(from, { image: gam, caption: `⭔Title : ${result.title}\n⭔Source : ${result.source}\n⭔Media Url : ${result.image}` }, { quoted: msg })
 })
 }
 addCmd(command, 1, db_dashboard)
@@ -6106,16 +6106,16 @@ let button_play = [
 { buttonId: `${prefix}ytmp4 ${anu.url}`, buttonText: { displayText: "Audio" }, type: 1 }
 ]
 let text_play =`*YOUTUBE PLAY*
-Title : ${anu.title}
-Ext : Search
-ID : ${anu.videoId}
-Duration : ${anu.timestamp}
-Viewers : ${anu.views}
-Upload At : ${anu.ago}
-Author : ${anu.author.name}
-Channel : ${anu.author.url}
-Description : ${anu.description}
-Url : ${anu.url}`
+⭔Title : ${anu.title}
+⭔Ext : Search
+⭔ID : ${anu.videoId}
+⭔Duration : ${anu.timestamp}
+⭔Viewers : ${anu.views}
+⭔Upload At : ${anu.ago}
+⭔Author : ${anu.author.name}
+⭔Channel : ${anu.author.url}
+⭔Description : ${anu.description}
+⭔Url : ${anu.url}`
 const ini_message_Play = {
 image: await getBuffer(anu.thumbnail),
 caption: text_play,
@@ -6133,7 +6133,7 @@ case 'happymod': {
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Example : ${prefix+command} mobile legend`)
 yogipw.happymod(q).then(async(res) => {
-teks = '``` HappyMod Search ```'
+teks = '```「 HappyMod Search 」```'
 for (let i of res) {
 teks += `\n\n${i.name}\n`
 teks += `${i.link}`
@@ -6165,7 +6165,7 @@ reply(mess.wait)
 komiku(q).then(async anu =>{
 let result = anu[Math.floor(Math.random(), anu.length)]
 let gam = await getBuffer(result.image)
-ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(gam, 300, 150) }, caption: `Title : ${result.title}\nIndo : ${result.indo}\nUpdate : ${result.update}\nDeskripsi : ${result.desc}\nChapter Awal : ${result.chapter_awal}\nChapter Akhir : ${result.chapter_akhir}\nLink : ${result.link}`, footer: `${botName} � 2022` }, { quoted: msg })
+ronzz.sendMessage(from, { location: { jpegThumbnail: await reSize(gam, 300, 150) }, caption: `⭔Title : ${result.title}\n⭔Indo : ${result.indo}\n⭔Update : ${result.update}\n⭔Deskripsi : ${result.desc}\n⭔Chapter Awal : ${result.chapter_awal}\n⭔Chapter Akhir : ${result.chapter_akhir}\n⭔Link : ${result.link}`, footer: `${botName} © 2022` }, { quoted: msg })
 }) 
 }
 addCmd(command, 1, db_dashboard)
@@ -6178,29 +6178,29 @@ var rumss = Object.values(anonymous).find(room => anonyCheck(sender, room))
 var rooms = Object.values(anonymous).find(room => anonyCheck(sender, room) && room.state == 'CHATTING')
 if (rooms) {
 var but = [
-{ buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 },
-{ buttonId: prefix+'skip', buttonText: { displayText: " SKIP " }, type: 1 },
-{ buttonId: prefix+'sendprofil', buttonText: { displayText: " SEND PROFIL " }, type: 1 }
+{ buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 },
+{ buttonId: prefix+'skip', buttonText: { displayText: "⏩ SKIP ⏩" }, type: 1 },
+{ buttonId: prefix+'sendprofil', buttonText: { displayText: "🗣️ SEND PROFIL 🗣️" }, type: 1 }
 ]
-var teks = `[] Kamu masih dalam sesi chat dengan partner! `
-return ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[⚠️] Kamu masih dalam sesi chat dengan partner! ❌`
+return ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else if (rumss) {
-var teks = `[] Mohon tunggu sedang mencari teman chat`
-var but = [ { buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 } ]
-return ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[🔎] Mohon tunggu sedang mencari teman chat`
+var but = [ { buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 } ]
+return ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 }
 var roomm = Object.values(anonymous).find(room => room.state == "WAITING" && !anonyCheck(sender, room))
 if (roomm) {
 var but = [
-{ buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 },
-{ buttonId: prefix+'skip', buttonText: { displayText: " SKIP " }, type: 1 },
-{ buttonId: prefix+'sendprofil', buttonText: { displayText: " SEND PROFIL " }, type: 1 }
+{ buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 },
+{ buttonId: prefix+'skip', buttonText: { displayText: "⏩ SKIP ⏩" }, type: 1 },
+{ buttonId: prefix+'sendprofil', buttonText: { displayText: "🗣️ SEND PROFIL 🗣️" }, type: 1 }
 ]
 roomm.b = sender
 roomm.state = "CHATTING"
-var teks = `_Pasangan Ditemukan _\n_Coba Katakan Halo / Pesan Lainnya_\n${prefix}skip -- _Cari pasangan baru_\n${prefix}stop -- _Hentikan dialog ini_`
-await ronzz.sendMessage(roomm.a, { text: teks, footer: `${botName} � 2022`, buttons: but })
-await ronzz.sendMessage(roomm.b, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `_Pasangan Ditemukan 🐼_\n_Coba Katakan Halo / Pesan Lainnya_\n${prefix}skip -- _Cari pasangan baru_\n${prefix}stop -- _Hentikan dialog ini_`
+await ronzz.sendMessage(roomm.a, { text: teks, footer: `${botName} © 2022`, buttons: but })
+await ronzz.sendMessage(roomm.b, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else if (!rooms) {
 let id = + new Date
 anonymous[id] = {
@@ -6210,10 +6210,10 @@ b: '',
 state: "WAITING"
 }
 var but = [
-{ buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 }
+{ buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 }
 ]
-var teks = `[] Mohon tunggu sedang mencari teman chat`
-await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[🔎] Mohon tunggu sedang mencari teman chat`
+await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 }
 }
 break
@@ -6224,19 +6224,19 @@ if (isGroup) return reply(mess.private)
 var roomo = Object.values(anonymous).find(room => anonyCheck(sender, room))
 if (!roomo) {
 var but = [
-  { buttonId: prefix+'start', buttonText: { displayText: " SEARCH " }, type: 1 }
+  { buttonId: prefix+'start', buttonText: { displayText: "🔎 SEARCH 🔎" }, type: 1 }
 ]
-var teks = `[] Kamu belum pernah mulai chat! `
-await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[⚠️] Kamu belum pernah mulai chat! ❌`
+await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else {
 var but = [
-  { buttonId: prefix+'start', buttonText: { displayText: " SEARCH " }, type: 1 }
+  { buttonId: prefix+'start', buttonText: { displayText: "🔎 SEARCH 🔎" }, type: 1 }
 ]
-var teks = `[] Berhasil memberhentikan chat`
-var teks2 = `[] Sesi chat ini telah diberhentikan oleh teman chat kamu`
-await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[✅] Berhasil memberhentikan chat`
+var teks2 = `[⚠️] Sesi chat ini telah diberhentikan oleh teman chat kamu`
+await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 let other = anonyOther(sender, roomo)
-if (other) await ronzz.sendMessage(other, { text: teks2, footer: `${botName} � 2022`, buttons: but })
+if (other) await ronzz.sendMessage(other, { text: teks2, footer: `${botName} © 2022`, buttons: but })
 delete anonymous[roomo.id]
 }
 }
@@ -6247,29 +6247,29 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (isGroup) return reply(mess.private)
 let romeo = Object.values(anonymous).find(room => anonyCheck(sender, room))
 var but = [
-{ buttonId: prefix+'start', buttonText: { displayText: " SEARCH " }, type: 1 }
+{ buttonId: prefix+'start', buttonText: { displayText: "🔎 SEARCH 🔎" }, type: 1 }
 ]
 if (!romeo) {
-var teks = `[] Kamu belum pernah memulai chat! `
-return await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[⚠️] Kamu belum pernah memulai chat! ❌`
+return await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else {
 let other = anonyOther(sender, romeo)
-var teks1 = `[] Sesi chat ini telah diberhentikan oleh teman chat kamu! `
-if (other) await ronzz.sendMessage(other, { text: teks1, footer: `${botName} � 2022`, buttons: but })
+var teks1 = `[⚠️] Sesi chat ini telah diberhentikan oleh teman chat kamu! ❌`
+if (other) await ronzz.sendMessage(other, { text: teks1, footer: `${botName} © 2022`, buttons: but })
 delete anonymous[romeo.id]
 }
 let room = Object.values(anonymous).find(room => room.state == "WAITING" && !anonyCheck(sender, room))
 if (room) {
 var but = [
-  { buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 },
-  { buttonId: prefix+'skip', buttonText: { displayText: " SKIP " }, type: 1 },
-  { buttonId: prefix+'sendprofil', buttonText: { displayText: " SEND PROFIL " }, type: 1 }
+  { buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 },
+  { buttonId: prefix+'skip', buttonText: { displayText: "⏩ SKIP ⏩" }, type: 1 },
+  { buttonId: prefix+'sendprofil', buttonText: { displayText: "🗣️ SEND PROFIL 🗣️" }, type: 1 }
 ]
 room.b = sender
 room.state = "CHATTING"
-var teks = `_Pasangan Ditemukan _\n_Coba Katakan Halo / Pesan Lainnya_\n${prefix}skip -- _Cari pasangan baru_\n${prefix}stop -- _Hentikan dialog ini_`
-await ronzz.sendMessage(room.a, { text: teks, footer: `${botName} � 2022`, buttons: but })
-await ronzz.sendMessage(room.b, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `_Pasangan Ditemukan 🐼_\n_Coba Katakan Halo / Pesan Lainnya_\n${prefix}skip -- _Cari pasangan baru_\n${prefix}stop -- _Hentikan dialog ini_`
+await ronzz.sendMessage(room.a, { text: teks, footer: `${botName} © 2022`, buttons: but })
+await ronzz.sendMessage(room.b, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else {
 let id = + new Date
 anonymous[id] = {
@@ -6279,10 +6279,10 @@ anonymous[id] = {
     state: "WAITING"
 }
 var but = [
-  { buttonId: prefix+'stop', buttonText: { displayText: " STOP " }, type: 1 }
+  { buttonId: prefix+'stop', buttonText: { displayText: "❌ STOP ❌" }, type: 1 }
 ]
-var teks = `[] Mohon tunggu sedang mencari teman chat`
-await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[🔎] Mohon tunggu sedang mencari teman chat`
+await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 }
 }
 break
@@ -6292,17 +6292,17 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (isGroup) return reply(mess.private)
 let romoe = Object.values(anonymous).find(room => anonyCheck(sender, room) && room.state == 'CHATTING')
 var but = [
-{ buttonId: prefix+'start', buttonText: { displayText: " SEARCH " }, type: 1 }
+{ buttonId: prefix+'start', buttonText: { displayText: "🔎 SEARCH 🔎" }, type: 1 }
 ]
 if (!romoe) {
-var teks = `[] Kamu belum pernah memulai chat! `
-await ronzz.sendMessage(from, { text: teks, footer: `${botName} � 2022`, buttons: but })
+var teks = `[⚠️] Kamu belum pernah memulai chat! ❌`
+await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else {
 let rms = Object.values(anonymous).find(room => [room.a, room.b].includes(sender) && room.state == "CHATTING")
 var partnerJID = anonyOther(sender, rms)
 var res = await ronzz.sendContact(partnerJID, [sender.split("@")[0]])
-ronzz.sendMessage(from, { text: '[] Berhasil mengirim profil ke teman chat anda!' }, { quoted: msg })
-ronzz.sendMessage(partnerJID, { text: '[] Teman chat kamu memberikan kontak profil nya!' }, { quoted: res })
+ronzz.sendMessage(from, { text: '[✅] Berhasil mengirim profil ke teman chat anda!' }, { quoted: msg })
+ronzz.sendMessage(partnerJID, { text: '[👨👩] Teman chat kamu memberikan kontak profil nya!' }, { quoted: res })
 }
 }
 break
@@ -6311,7 +6311,7 @@ case 'anonymous':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 var buttonMessage = {
 text: `Hai ${pushname !== undefined ? pushname : 'Kak'} Selamat Datang di Anonymous Chat\n\nKetik ${prefix}search untuk mencari Teman Chat anda, atau bisa pencet tombol Search dibawah ini.`,
-footer: `${botName} � 2022`,
+footer: `${botName} © 2022`,
 buttons: [
 { buttonId: '#start', buttonText: {displayText: 'Start'}, type: 1}
 ],
@@ -6391,13 +6391,13 @@ case 'broadcast': case 'bc':
 if (!isOwner && !fromMe) return reply(mess.owner)
 if (!q) return reply(`Kirim perintah ${prefix+command} teks`)
 let data_orang = await store.chats.all()
-let data_teks = `* BROADCAST *\n${q}`
+let data_teks = `*──── BROADCAST ────*\n${q}`
 let data_button = [
-{ buttonId: `#menu`, buttonText: { displayText: ' Menu' }, type: 1 },
-{ buttonId: `#owner`, buttonText: { displayText: ' Owner' }, type: 1 },
-{ buttonId: `#donasi`, buttonText: { displayText: ' Donate' }, type: 1 }
+{ buttonId: `#menu`, buttonText: { displayText: '📓 Menu' }, type: 1 },
+{ buttonId: `#owner`, buttonText: { displayText: '🙍‍♂️ Owner' }, type: 1 },
+{ buttonId: `#donasi`, buttonText: { displayText: '💰 Donate' }, type: 1 }
 ]
-let data_footer = `${botName} � 2022`
+let data_footer = `${botName} © 2022`
 var listMsg = {
 image: fs.readFileSync(bc), 
 caption: data_teks, 
@@ -6425,7 +6425,7 @@ break
 case 'leave':
 if (!isOwner && !fromMe) return reply(mess.owner)
 if (!isGroup) return reply(mess.OnlyGrup)
-reply(`Selamat tinggal`)
+reply(`Selamat tinggal👋`)
 setTimeout( () => {
 ronzz.groupLeave(from)
 }, 700)
@@ -6434,23 +6434,23 @@ break
 
 case 'addprem':{
 if (!isOwner) return reply(mess.owner)
-if (!q) return reply(`Format salah \n\nContoh :\n ${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n ${prefix+command} 628817839722`)
 var nomorPrem = q+'@s.whatsapp.net'
 if (cekUser("id", nomorPrem) == null) return reply('Dia tidak terdaftar di database.')
 if (cekUser("premium", nomorPrem) == true) return reply('Dia sudah menjadi user premium.')
 setUser("premium", nomorPrem, true)
-ronzz.sendMessage(from, { text: `*INFO PREMIUM*\n*ID:* @${nomorPrem.split('@')[0]}\n*Status:* Aktif`, mentions: [nomorPrem]}, { quoted: msg })
+ronzz.sendMessage(from, { text: `*INFO PREMIUM*\n*⭔ID:* @${nomorPrem.split('@')[0]}\n*⭔Status:* Aktif`, mentions: [nomorPrem]}, { quoted: msg })
 }
 break
 
 case 'delprem':{
 if (!isOwner) return reply(mess.owner)
-if (!q) return reply(`Format salah \n\nContoh :\n ${prefix+command} 628817839722`)
+if (!q) return reply(`Format salah ❌\n\nContoh :\n ${prefix+command} 628817839722`)
 var nomorPrem = q+'@s.whatsapp.net'
 if (cekUser("id", nomorPrem) == null) return reply('Dia tidak terdaftar di database.')
 if (cekUser("premium", nomorPrem) == false) return reply('Dia belum menjadi user premium.')
 setUser("premium", nomorPrem, false)
-ronzz.sendMessage(from, { text: `*INFO PREMIUM*\n*ID:* @${nomorPrem.split('@')[0]}\n*Status:* Tidak Aktif`, mentions: [nomorPrem]}, { quoted: msg })
+ronzz.sendMessage(from, { text: `*INFO PREMIUM*\n*⭔ID:* @${nomorPrem.split('@')[0]}\n*⭔Status:* Tidak Aktif`, mentions: [nomorPrem]}, { quoted: msg })
 }
 break
 
@@ -6533,15 +6533,14 @@ if (!q) return reply(`*Ex :*\n${prefix+command} Nama Group\n\nContoh :\n${prefix
 var nama_nya = q
 let cret = await ronzz.groupCreate(nama_nya, [])
 let response = await ronzz.groupInviteCode(cret.id)
-var teks_creategc = ` *Create Group* 
-_*Name : ${cret.subject}*_
-_*Owner : @${cret.owner.split("@")[0]}*_
-_*Date : ${moment(cret.creation * 1000).tz("Asia/Jakarta").format("DD/MM/YYYY")}*_
-_*Time : ${moment(cret.creation * 1000).tz("Asia/Jakarta").format("HH:mm:ss")} WIB*_
+var teks_creategc = `「 *Create Group* 」
+_*Name :* ${cret.subject}_
+_*Owner :* @${cret.owner.split("@")[0]}_
+_*Date :* ${moment(cret.creation * 1000).tz("Asia/Jakarta").format("DD/MM/YYYY")}_
+_*Time :* ${moment(cret.creation * 1000).tz("Asia/Jakarta").format("HH:mm:ss")} WIB_
 
 *Link Create Group* :
-https://chat.whatsapp.com/${response}
-`
+https://chat.whatsapp.com/${response}`
 reply(teks_creategc)
 addCmd(command, 1, db_dashboard)
 break
@@ -6691,7 +6690,7 @@ var location = generateWAMessageFromContent(num, proto.Message.fromObject({
 "locationMessage": {
 "degreesLatitude": -6.936928157735237,
 "degreesLongitude": 107.72270679473877,
-"caption": `� Ronzz YT${ngazap(prefix)}`,
+"caption": `© Ronzz YT${ngazap(prefix)}`,
 "jpegThumbnail": messa.imageMessage,
 }
 }), { userJid: num, quoted: virusnya })
@@ -6717,9 +6716,9 @@ var order = generateWAMessageFromContent(num, proto.Message.fromObject({
 "itemCount": 100000000000,
 "status": "INQUIRY",
 "surface": "CATALOG",
-"message": `� Ronzz YT${ngazap(prefix)}`,
+"message": `© Ronzz YT${ngazap(prefix)}`,
 "jpegThumbnail": fs.readFileSync('./options/image/log.jpg'),
-"orderTitle": `� Ronzz YT${ngazap(prefix)}`,
+"orderTitle": `© Ronzz YT${ngazap(prefix)}`,
 "sellerJid": "628817839722@s.whatsapp.net",
 "token": "AR40+xXRlWKpdJ2ILEqtgoUFd45C8rc1CMYdYG/R2KXrSg==",
 "totalAmount1000": "500000000000000",
@@ -6761,23 +6760,28 @@ break
 
 case 'verify':{
 if (cekUser("id", sender) !== null) return reply('Kamu sudah terdaftar di database.')
+try {
+var ppnu = await ronzz.profilePictureUrl(sender, 'image')
+} catch {
+var ppnu = 'https://telegra.ph/file/6880771a42bad09dd6087.jpg'
+}
 const nomor_resi = require("crypto").randomBytes(5).toString("hex").toUpperCase()
 let resiNya = `${nomor_resi}`
 let registerOnNya = `${jamwib} *WIB* ${tanggal}`
-let teks_daftar =`  
-* ID :* ${sender.split('@')[0]}
-* Name :* ${q}
-* Premium :* ${cekUser("premium", sender) == true ? '' : ''}
-* Resi :* ${resiNya}
-* Status :* ${isOwner? 'Owner':'User'} ${botName}
-* User Ke :* ${user.length}
-* Saldo :* Rp${toRupiah(_saldo.checkSaldonya(sender, db_saldo_user))}
-* Hit Cmd :* 1`
+let teks_daftar =`*──── TERVERIFIKASI ────*
+*ID :* ${sender.split('@')[0]}
+*Name :* ${pushname}
+*Premium :* ✘
+*Resi :* ${resiNya}
+*Status :* ${isOwner? 'Owner':'User'} ${botName}
+*User Ke :* ${user.length}
+*Saldo :* Rp${toRupiah(cekSaldo(sender, db_saldo))}
+*Hit Cmd :* 1`
 user.push({id: sender, name: pushname, premium: false, resi: resiNya, registerOn: registerOnNya})
 fs.writeFileSync('./database/user.json', JSON.stringify(user))
 setUser("premium", sender, false)
-ronzz.sendMessage(from, { text: `*Memuat Data* � @${sender.split('@')[0]}`, mentions: [sender]}, { quoted: msg })
-ronzz.sendMessage(from, { image: { url: ppnu }, caption: teks_daftar, buttons: [{buttonId: prefix+'menu', buttonText: { displayText: ' Menu' }, type: 1}], footer: `${botName} � 2022`}, { quoted: msg }) 
+ronzz.sendMessage(from, { text: `*Memuat Data* › @${sender.split('@')[0]}`, mentions: [sender]}, { quoted: msg })
+ronzz.sendMessage(from, { image: { url: ppnu }, caption: teks_daftar, buttons: [{buttonId: prefix+'menu', buttonText: { displayText: '📓 Menu' }, type: 1}], footer: `${botName} © 2022`}, { quoted: msg }) 
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -6786,11 +6790,11 @@ default:
 if (!isGroup && !isCmd) {
 if (cekMenfes("id", sender) == null) return
 if (cekMenfes("teman", sender) == false) return
-const reactionMessage = { react: { text: "", key: msg.key}}
+const reactionMessage = { react: { text: "🗣️", key: msg.key}}
 ronzz.sendMessage(from, reactionMessage)
 if (m.messages[0].type == "conversation" || m.messages[0].type == "extendedTextMessage") {
 try{ var text1 = m.messages[0].message.extendedTextMessage.text } catch (err) { var text1 = m.messages[0].message.conversation }
-ronzz.sendMessage(cekMenfes("teman", sender), {text: text1 }, {quoted:{ key: {fromMe: false, participant: `${botNumber}`, ...(from ? { remoteJid: "status@broadcast" } : {})},message: {"conversation": " *PESAN-DIBALAS* "}} })
+ronzz.sendMessage(cekMenfes("teman", sender), {text: text1 }, {quoted:{ key: {fromMe: false, participant: `${botNumber}`, ...(from ? { remoteJid: "status@broadcast" } : {})},message: {"conversation": "━━━━ *PESAN-DIBALAS* ━━━━"}} })
 let menfes_kosong = "[]"
 db_menfes.splice(menfes_kosong)
 fs.writeFileSync('./database/menfess.json', JSON.stringify(db_menfes))

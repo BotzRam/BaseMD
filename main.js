@@ -35,14 +35,14 @@ const { state, saveState } = useSingleFileAuthState(session)
 
 function title() {
       console.clear()
-      console.log(chalk.bold.green(figlet.textSync('VelzzyBoz', {
+      console.log(chalk.bold.green(figlet.textSync('Base Bot', {
          font: 'Standard',
          horizontalLayout: 'default',
          verticalLayout: 'default',
          width: 80,
          whitespaceBreak: false
       })))
-console.log(chalk.yellow(`${chalk.red('[ Created By RonzzYT ]')}\n\n${chalk.italic.magenta('• Author')} : ${chalk.white('RonzzOfc')}\n${chalk.italic.magenta('• YouTube')} : ${chalk.white('Ronzz YT')}\n${chalk.italic.magenta('• Caption')} : ${chalk.white('Terus Berkarya Hingga Suatu Saat Menjadi Orang Kaya')}\n${chalk.italic.magenta('• Donate')} : ${chalk.white('https://saweria.co/RonzzYT')}\n`))
+console.log(chalk.yellow(`${chalk.red('[ Made By RonzzYT ]')}\n\n${chalk.italic.magenta('• Author')} : ${chalk.white('RonzzOfc')}\n${chalk.italic.magenta('• YouTube')} : ${chalk.white('Ronzz YT')}\n${chalk.italic.magenta('• Caption')} : ${chalk.white('Terus Berkarya Hingga Suatu Saat Menjadi Orang Kaya')}\n${chalk.italic.magenta('• Donate')} : ${chalk.white('https://saweria.co/RonzzYT')}\n`))
 }
 
 /**
@@ -94,7 +94,7 @@ const connectToWhatsApp = async () => {
         const ronzz = makeWASocket({
             printQRInTerminal: true,
             logger: logg({ level: 'fatal' }),
-            browser: ['ZiahBotz','Safari','1.0.0'],
+            browser: ['Base Bot By Ronzz YT','Safari','1.0.0'],
             auth: state
         })
         title()
