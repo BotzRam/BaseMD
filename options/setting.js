@@ -12,8 +12,8 @@ const botName = "VelzzyBot" //Nama bot
 const owner = ["628817839722","16784037437"] //Ganti agar fitur owner bisa digunakan
 const ownerNomer = "628817839722" //Nomor lu
 const ownerName = "Ronzz YT" //Nama lu
-const footer = "VelzzyBotz � 2022" //Seterah
-const packname = "� VelzzyBotz" //Sticker wm ubah
+const footer = "VelzzyBotz © 2022" //Seterah
+const packname = "© VelzzyBotz" //Sticker wm ubah
 const author = "Di Buat Oleh Ronzz YT" //Sticker wm ubah nama lu
 const sessionName = "session" //Ngga usah di ganti
 
@@ -26,9 +26,9 @@ const bc = "./options/image/bc.jpg" //Ngga usah di ganti
 const responP = "./options/image/responP.jpg" //Ngga usah di ganti
 
 //Message
-const sp = ""
+const sp = "⭔"
 const mess = {
-	sukses: "Done",
+	sukses: "Done🤗",
 	admin: "Command ini hanya bisa digunakan oleh Admin Grup",
 	botAdmin: "Bot Harus menjadi admin",
 	owner: "Command ini hanya dapat digunakan oleh owner bot",
