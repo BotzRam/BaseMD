@@ -79,7 +79,7 @@ const enter3 = "\n\n\n"
 //Apikey
 let lolkey = 'SadTeams'
 
-module.exports = async(ronzz, msg, m, setting, store, welcome, left) => {
+module.exports = async(ronzz, msg, m, store, welcome, left) => {
 try {
 const { type, quotedMsg, mentioned, now, fromMe, isBaileys } = msg
 if (msg.isBaileys) return
