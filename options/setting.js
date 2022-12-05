@@ -4,9 +4,6 @@ const api = "https://ronzxapis.my.id" //Apabila link api error segera lapor ke o
 // Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
 const apikey = "APIKEY" //login di https://ronzxapis.my.id to get apikey || login di https://ronzxapis.my.id untuk mendapatkan apikey
 
-// Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
-const apikeyAntlatic = "APIKEY" //Untuk cara mendapatkannya ada di channel https://youtube.com/c/RonzzYT di deskripsi video
-
 //Other
 const botName = "VelzzyBot" //Nama bot
 const owner = ["628817839722","16784037437"] //Ganti agar fitur owner bisa digunakan
