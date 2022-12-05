@@ -26,10 +26,7 @@ let db_menfes = JSON.parse(fs.readFileSync('./database/menfess.json'));
 let set_proses = JSON.parse(fs.readFileSync('./database/set_proses.json'));
 let db_respon_list = JSON.parse(fs.readFileSync('./database/list_message.json'));
 let db_dashboard = JSON.parse(fs.readFileSync('./database/dashboard.json'));
-let db_saldo = JSON.parse(fs.readFileSync("./database/saldo.json"));
 let db_error = JSON.parse(fs.readFileSync("./database/error.json"));
-let depositPath = "./options/deposit/"
-let topupPath = "./options/topup/"
 let judullist = []
 let daftarlist = []
 let db_spam = []
@@ -44,7 +41,6 @@ const { buttonvirus2 } = require('./options/virus/buttonvirus2')
 
 // Response
 const { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess, payment } = require("./options/setting");
-const { addSaldo, minSaldo, cekSaldo } = require("./function/deposit");
 const { addCmd } = require('./function/cmd')
 const { stalkff, stalkml } = require("./function/stalker");
 const { pinterest, wallpaper, wikimedia, quotesAnime, komiku, ssweb, sholat, tafsirsurah, fbdl } = require("./function/scraper");
@@ -399,7 +395,6 @@ let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : 
 - Name : ${pushname}`}
 - Bio : ${bio ? bio : '-'}
 - Status : ${isOwner ? 'Owner' : 'User'} ${botName}
-- Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}
 
 *BOT INFO*
 - Library : Baileys-MD
@@ -718,8 +713,7 @@ let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : 
 ⭔Premium : ✘
 ⭔Name : ${pushname}`}
 ⭔Bio : ${bio ? bio : '-'}
-⭔Status : ${isOwner? 'Owner':'User'} ${botName}
-⭔Saldo : Rp${toRupiah(cekSaldo(sender, db_saldo))}`
+⭔Status : ${isOwner? 'Owner':'User'} ${botName}`
 let button = [
 { buttonId: `${prefix}menu`, buttonText: { displayText: '📓 Menu' }, type: 1 },
 { buttonId: `${prefix}owner`, buttonText: { displayText: '🙍‍♂️ Owner' }, type: 1 },
@@ -1233,122 +1227,6 @@ if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Teks\n\nContoh :\n${prefix+command} Ronzz Official`)
 let hasilNya = await fetchJson(`https://danzzapi.xyz/api/tools/tts?text=${q}&lang=id-ID&apikey=danzz`)
 ronzz.sendMessage(from, { audio: { url: hasilNya.result }, mimetype: 'audio/mpeg', ptt: true }, { quoted: msg })
-}
-break
-
-case 'saldo':{
-if (cekUser("id", sender) == null) return sendMessRegis(from)
-reply(`*━━ CHECK YOUR INFO ━━*
-
- _• *Name:* ${cekUser("name", sender)}_
- _• *Resi:* ${cekUser("resi", sender)}_
- _• *Nomer:* ${sender.split('@')[0]}_
- _• *Saldo:* Rp${toRupiah(cekSaldo(sender, db_saldo))}_
-
-*Note :*
-_saldo hanya bisa untuk topup_
-_tidak bisa ditarik atau transfer_!`)
-}
-break
-
-case 'deposit': case 'depo':{
-if (cekUser("id", sender) == null) return sendMessRegis(from)
-var rows = [
-{
-title: "QRIS",
-rowId: "payment_qris",
-description: "Status : True"
-},
-{
-title: "DANA",
-rowId: "payment_dana",
-description: "Status : True"
-},
-{
-title: "OVO",
-rowId: "payment_ovo",
-description: "Status : True"
-},
-{
-title: "GOPAY",
-rowId: "!payment_gopay",
-description: "Status : False"
-}
-]
-var dep_but = {
-text: `Hai *${cekUser("name", sender)}* ${ucapanWaktu} 👋\ningin melakukan deposit saldo? silahkan pilih payment yang tersedia☺`,
-buttonText: "Pilih disini",
-sections: [ { title: "PAYMENT DEPOSIT", rows } ]
-}
-ronzz.sendMessage(from, dep_but)
-}
-break
-
-case 'payment_gopay':
-reply('Payment Gopay belum tersedia\nSilahkan pilih payment lain ya☺')
-break
-
-case 'bukti':
-if (!fs.existsSync(depositPath + sender.split("@")[0] + ".json")) return reply(`Maaf *${cekUser("name", sender)}* sepertinya kamu belum pernah melakukan deposit`)
-if (isImage && isQuotedImage) return reply(`Kirim gambar dengan caption *#bukti* atau reply gambar yang sudah dikirim dengan caption *#bukti*`)
-await ronzz.downloadAndSaveMediaMessage(msg, "image", `./options/deposit/${sender.split('@')[0]}.jpg`)
-
-let oke_bang = fs.readFileSync(`./options/deposit/${sender.split('@')[0]}.jpg`)
-let data_depo = JSON.parse(fs.readFileSync(depositPath + sender.split("@")[0] + ".json"))
-
-let caption_bukti =`「 *DEPOSIT USER* 」
-⭔ID Resi: ${data_depo.ID}
-⭔Nomer: @${data_depo.number.split('@')[0]}
-⭔Payment: ${data_depo.payment}
-⭔Tanggal: ${data_depo.date.split(' ')[0]}
-⭔Jumlah Deposit: Rp${toRupiah(data_depo.data.amount_deposit)}
-⭔Pajak: Rp2.500
-⭔Total Bayar: Rp${toRupiah(data_depo.data.amount_deposit+2500)}
-
-Ada yang deposit nih kak, coba dicek saldonya, jika sudah masuk konfirmasi dengan klik button *Accept*`
-
-let bukti_button = [
-{ buttonId: `#acc_deposit ${sender.split('@')[0]}`, buttonText: {displayText: 'Accept'}, type: 1},
-{ buttonId: `#reject_deposit ${sender.split('@')[0]}`, buttonText: {displayText: 'Reject'}, type: 1}
-]
-let bukti_bayar = {
-image: oke_bang,
-caption: caption_bukti,
-title: 'bukti pembayaran',
-footer: 'Press The Button Below',
-buttons: bukti_button,
-headerType: 5 
-}
-ronzz.sendMessage(`${ownerNomer}`, bukti_bayar)
-reply(`Mohon tunggu ya kak, sampai di acc oleh owner ☺`)
-fs.unlinkSync(`./options/deposit/${sender.split('@')[0]}.jpg`)
-break
-
-case 'acc_deposit':{
-if (!isOwner) return reply('Fitur ini khusus owner')
-let orang = q
-let data_deposit = JSON.parse(fs.readFileSync(depositPath + orang + '.json'))
-addSaldo(data_deposit.number, Number(data_deposit.data.amount_deposit), db_saldo)
-var text_sukses = `「 *DEPOSIT SUKSES* 」
-⭔ID : ${data_deposit.ID}
-⭔Name ${cekUser("name", sender)}
-⭔Nomer: ${data_deposit.number.split('@')[0]}
-⭔Payment: ${data_deposit.payment}
-⭔Tanggal: ${data_deposit.date.split(' ')[0]}
-⭔Jumlah Deposit: Rp${toRupiah(data_deposit.data.amount_deposit)}`
-reply(`${text_sukses}\n`)
-ronzz.sendMessage(data_deposit.number, { text: `${text_sukses}\n\n_Deposit kamu telah dikonfirmasi oleh admin, silahkan cek saldo dengan cara ketik #saldo_`})
-fs.unlinkSync(depositPath + data_deposit.number.split('@')[0] + ".json")
-}
-break
-
-case 'reject_deposit':{
-if (!isOwner) return reply('Fitur ini khusus owner')
-let orang = q
-let data_deposit = JSON.parse(fs.readFileSync(depositPath + orang + '.json'))
-reply(`Sukses Reject ID Deposit : ${data_deposit.ID}`)
-ronzz.sendMessage(data_deposit.number, { text: `Maaf Deposit Dengan ID : *${data_deposit.ID}* Ditolak, Jika ada kendala hubungin Owner Bot.\nwa.me/${ownerNomer.split('@')[0]}`})
-fs.unlinkSync(depositPath + data_deposit.number.split('@')[0] + ".json")
 }
 break
 
@@ -3093,7 +2971,6 @@ let teks_daftar =`*──── TERVERIFIKASI ────*
 *Resi :* ${resiNya}
 *Status :* ${isOwner? 'Owner':'User'} ${botName}
 *User Ke :* ${user.length}
-*Saldo :* Rp${toRupiah(cekSaldo(sender, db_saldo))}
 *Hit Cmd :* 1`
 user.push({id: sender, name: pushname, premium: false, resi: resiNya, registerOn: registerOnNya})
 fs.writeFileSync('./database/user.json', JSON.stringify(user))
