@@ -117,7 +117,7 @@ const connectToWhatsApp = async () => {
            if (msg.key && msg.key.remoteJid == "status@broadcast") return
            msg = serialize(ronzz, msg)
            msg.isBaileys = msg.key.id.startsWith('BAE5') || msg.key.id.startsWith('3EB0')
-           require('./index')(ronzz, msg, m, setting, store, welcome)
+           require('./index')(ronzz, msg, m, store, welcome)
         })
 
         ronzz.ev.on('connection.update', (update) => {
