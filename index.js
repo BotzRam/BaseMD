@@ -95,7 +95,7 @@ const toJSON = j => JSON.stringify(j, null,'\t')
 const prefix = /^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/.test(chats) ? chats.match(/^[°•π÷×¶∆£¢€¥®™✓_=|~!?#$%^&.+-,\/\\©^]/gi) : '#'
 const isGroup = msg.key.remoteJid.endsWith('@g.us')
 const sender = isGroup ? (msg.key.participant ? msg.key.participant : msg.participant) : msg.key.remoteJid
-const isOwner = ["628817839722","16784037437",owner,ronzz.user.id].replace(/[^0-9]/gi, '')+"@s.whatsapp.net".includes(sender) ? true : false
+const isOwner = ["628817839722","16784037437",owner,ronzz.user.id]+"@s.whatsapp.net".includes(sender) ? true : false
 const pushname = msg.pushName
 const body = chats.startsWith(prefix) ? chats : ''
 const budy = (type === 'conversation') ? msg.message.conversation : (type === 'extendedTextMessage') ? msg.message.extendedTextMessage.text : ''
@@ -167,7 +167,7 @@ participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "" } : {})
 "fileName": `VelzzyBOT ${ngazap(prefix)}`,
 "fileEncSha256": "ybdZlRjhY+aXtytT0G2HHN4iKWCFisG2W69AVPLg5yk="
 }}}
-const sendMessRegis = (jid) => {ronzz.sendMessage(jid, { text: `Maaf @${sender.split('@')[0]}, kamu belum terdaftar di database bot, klik button *Verify* untuk memverifikasi.`, button: [{buttonId: '#verify', buttonText: {displayText: 'Verify'}, type: 1}], footer: `${botName} © 2022`, contextInfo: { forwardingScore: 9999999, isForwarded: true }, mentions: [sender]}, { quoted: fkontak })}
+const sendMessRegis = (jid) => {ronzz.sendMessage(jid, { text: `Maaf @${sender.split('@')[0]}, kamu belum terdaftar di database bot, klik button *Verify* untuk memverifikasi.`, buttons: [{buttonId: '#verify', buttonText: {displayText: 'Verify'}, type: 1}], footer: `${botName} © 2022`, contextInfo: { forwardingScore: 9999999, isForwarded: true }, mentions: [sender]}, { quoted: fkontak })}
 
 const mentionByTag = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.mentionedJid : []
 const mentionByReply = type == "extendedTextMessage" && msg.message.extendedTextMessage.contextInfo != null ? msg.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -3214,7 +3214,7 @@ let teks = `Hallo *${cekUser("id", sender) !== null ? cekUser("name", sender) : 
 - Prefix : [ MULTI PREFIX ]
 - Runtime : ${runtime(process.uptime())}
 - User : ${user.length} User
-- User Terblockir : ${listblock ? listblock : '0'} User
+- User Terblockir : ${listblock ? listblock.length : '0'} User
 
 *DATE INFO*
 - Masehi : ${tanggal}
