@@ -306,9 +306,12 @@ msgFilter.addSpam(sender, db_spam)
 ronzz.sendTextMentions(from, `@${sender.split('@')[0]} terdeteksi spam bot tanpa jeda, lakukan perintah setelah 5 detik`, [sender])
 }
 
-if (isCmd && msgFilter.isFiltered(sender) && !isGroup && !isOwner) return spampm()
-if (isCmd && msgFilter.isFiltered(sender) && isGroup && !isOwner) return spamgr()
-if (isCmd && !isOwner) msgFilter.addFilter(sender)
+if (isCmd && msgFilter.isFiltered(sender) && !isGroup) return spampm()
+if (isCmd && msgFilter.isFiltered(sender) && isGroup) return spamgr()
+if (isCmd && !isOwner) {
+await sleep(50)
+msgFilter.addFilter(sender)
+}
 
 // Auto bio
 if (msg.message) {
