@@ -28,7 +28,7 @@ const { serialize, fetchJson, getBuffer, makeid, reSize } = require("./function/
 const { color, mylog, infolog } = require("./function/console");
 const time = moment(new Date()).format('HH:mm:ss DD/MM/YYYY');
 let welcome = JSON.parse(fs.readFileSync('./database/welcome.json'));
-const { botName, sessionName, ownerNomer } = require("./options/setting");
+const { botName, sessionName, ownerNomer, ownerName, email, youtube, region } = require("./options/setting");
 let session = `./${sessionName}.json`
 const { state, saveState } = useSingleFileAuthState(session)
 
@@ -332,10 +332,14 @@ if (json.content[0].tag == 'offer') {
            let list = []
            for (let i of kon) {
              list.push({
-               lisplayName: await ronzz.getName(i + '@s.whatsapp.net'),
-               vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${await ronzz.getName(i + '@s.whatsapp.net')}\nFN:${await ronzz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+               lisplayName: `${ownerNomer.includes(i) ? ownerName : await ronzz.getName(i + '@s.whatsapp.net')}`, 
+               vcard: `BEGIN:VCARD\nVERSION:3.0\nN:${ownerNomer.includes(i) ? ownerName : await ronzz.getName(i + '@s.whatsapp.net')}\nFN:${ownerNomer.includes(i) ? ownerName : await ronzz.getName(i + '@s.whatsapp.net')}\nitem1.TEL;waid=${i}:${i}\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:${email}\nitem2.X-ABLabel:Email\nitem3.URL:${youtube}\nitem3.X-ABLabel:YouTube\nitem4.ADR:;;;;;${region}\nitem4.X-ABLabel:Region\nEND:VCARD`
              })
            }
+	         list.push({
+               lisplayName: "Ronzz YT", 
+               vcard: "BEGIN:VCARD\nVERSION:3.0\nN:Ronzz YT\nFN:Ronzz YT\nitem1.TEL;waid=16784037437:+1 (678) 403 7437\nitem1.X-ABLabel:Ponsel\nitem2.EMAIL;type=INTERNET:ronzzyt8598@gmail.com\nitem2.X-ABLabel:Email\nitem3.URL:https://youtube.com/c/RonzzYT\nitem3.X-ABLabel:YouTube\nitem4.ADR:;;;;;Indonesia\nitem4.X-ABLabel:Region\nEND:VCARD"
+             })
            return ronzz.sendMessage(jid, { contacts: { displayName: `${list.length} Kontak`, contacts: list }, ...opts }, { quoted })
         }
         
