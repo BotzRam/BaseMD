@@ -26,7 +26,6 @@ let db_menfes = JSON.parse(fs.readFileSync('./database/menfess.json'));
 let set_proses = JSON.parse(fs.readFileSync('./database/set_proses.json'));
 let db_respon_list = JSON.parse(fs.readFileSync('./database/list_message.json'));
 let db_dashboard = JSON.parse(fs.readFileSync('./database/dashboard.json'));
-let db_error = JSON.parse(fs.readFileSync("./database/error.json"));
 let judullist = []
 let daftarlist = []
 let db_spam = []
@@ -2223,7 +2222,7 @@ case 'mediafire':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (!q) return reply(`Ex : ${prefix+command} Link\n\nContoh :\n${prefix+command} https://www.mediafire.com/file/4jzmc4boquizy0n/HAPUS_CONFIG_FF_MAX.7z/file`)
 if (!/^https?:\/\/www.mediafire.com/.test(q)) return reply(`Link tidak valid\nLink yang valid seperti dibawah ini\nhttps://www.mediafire.com/file/4jzmc4boquizy0n/HAPUS_CONFIG_FF_MAX.7z/file`)
-let { mediafireDl } = require('./lib/mediafire')
+let { mediafireDl } = require('./function/mediafire')
 let link_nya = q
 const result_mediafire = await mediafireDl(link_nya)
 let text_mediafire = "*MEDIAFIRE DOWNLOAD*\n"
@@ -3004,8 +3003,9 @@ const sender = isGroup ? (msg.key.participant ? msg.key.participant : msg.partic
 const moment = require("moment-timezone");
 const jamwib = moment.tz('asia/jakarta').format('HH:mm:ss')
 const tanggal = moment().tz("Asia/Jakarta").format("ll")
-db_error.push({"tanggal": tanggal, "jam": jamwib, "error": err, "dari": pushname, "nomor": sender})
-fs.writeFileSync('./database/error.json', JSON.stringify(db_error))
+let db_error = JSON.parse(fs.readFileSync("./database/error.json"));
+let errnya = {"tanggal": tanggal, "jam": jamwib, "error": err, "dari": pushname, "nomor": sender}
+fs.writeFileSync('./database/error.json', JSON.stringify(errnya, null, 3))
 var errny =`*SERVER ERROR*
 *Dari:* @${sender.split("@")[0]}
 *Name:* ${pushname}
