@@ -26,10 +26,9 @@ const { Spinner } = clui
 const { imageToWebp, videoToWebp, writeExifImg, writeExifVid } = require('./function/uploader')
 const { serialize, fetchJson, getBuffer, makeid, reSize } = require("./function/myfunc");
 const { color, mylog, infolog } = require("./function/console");
-const { groupResponse_Remove, groupResponse_Welcome, groupResponse_Promote, groupResponse_Demote } = require("./function/groupRespon");
 const time = moment(new Date()).format('HH:mm:ss DD/MM/YYYY');
 let welcome = JSON.parse(fs.readFileSync('./database/welcome.json'));
-const { sessionName, ownerNomer } = require("./options/setting");
+const { botName, sessionName, ownerNomer } = require("./options/setting");
 let session = `./${sessionName}.json`
 const { state, saveState } = useSingleFileAuthState(session)
 
@@ -42,7 +41,7 @@ function title() {
          width: 80,
          whitespaceBreak: false
       })))
-console.log(chalk.yellow(`${chalk.red('[ Made By RonzzYT ]')}\n\n${chalk.italic.magenta('� Author')} : ${chalk.white('RonzzOfc')}\n${chalk.italic.magenta('� YouTube')} : ${chalk.white('Ronzz YT')}\n${chalk.italic.magenta('� Caption')} : ${chalk.white('Terus Berkarya Hingga Suatu Saat Menjadi Orang Kaya')}\n${chalk.italic.magenta('� Donate')} : ${chalk.white('https://saweria.co/RonzzYT')}\n`))
+console.log(chalk.yellow(`${chalk.red('[ Made By RonzzYT ]')}\n\n${chalk.italic.magenta('• Author')} : ${chalk.white('RonzzOfc')}\n${chalk.italic.magenta('• YouTube')} : ${chalk.white('Ronzz YT')}\n${chalk.italic.magenta('• Caption')} : ${chalk.white('Terus Berkarya Hingga Suatu Saat Menjadi Orang Kaya')}\n${chalk.italic.magenta('• Donate')} : ${chalk.white('https://saweria.co/RonzzYT')}\n`))
 }
 
 /**
@@ -126,7 +125,7 @@ const connectToWhatsApp = async () => {
               status.stop()
               reconnect.stop()
               starting.stop()
-              console.log(mylog('Server Ready '))
+              console.log(mylog('Server Ready'))
               lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut 
               ? connectToWhatsApp() 
               : console.log(mylog('Wa web terlogout...'))
@@ -136,11 +135,102 @@ const connectToWhatsApp = async () => {
         ronzz.ev.on('group-participants.update', async (update) =>{
            const isWelcome = welcome
            if(!isWelcome.includes(update.id)) return
-           groupResponse_Demote(ronzz, update)
-           groupResponse_Promote(ronzz, update)
-           groupResponse_Welcome(ronzz, update)
-           groupResponse_Remove(ronzz, update)
+           if(isWelcome.includes(update.id)) {
+           const metadata = await ronzz.groupMetadata(update.id)
+for (let participant of update.participants) {
+try{
+let dnew = new Date(new Date + 3600000)
+let hari = dnew.toLocaleDateString('id', { weekday: 'long' })
+const d = new Date
+const tanggal = d.toLocaleDateString('id', { 
+day: 'numeric', 
+month: 'long', 
+year: 'numeric' 
+})
+const jamwib = moment.tz('asia/jakarta').format('HH:mm:ss')
+let metadata = await ronzz.groupMetadata(update.id)
+let participants = update.participants
+for (let num of participants) {
+if (update.action == 'demote') {
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Selamat🎉'}, type: 1 }]
+await ronzz.sendMessage(
+update.id, 
+{ 
+text: `*@${num.split("@")[0]} Demote From ${metadata.subject}*`,
+buttons: button, 
+footer: `${botName} © 2022`,
+mentions: [num] })
+}
+if (update.action == 'promote') {
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Selamat🎉'}, type: 1 }]
+await ronzz.sendMessage(
+update.id, 
+{ 
+text: `*@${num.split("@")[0]} Promote From ${metadata.subject}*`,
+buttons: button, 
+footer: `${botName} © 2022`,
+mentions: [num] })
+}
+if (update.action == 'add') {
+try {
+var ppuser = await ronzz.profilePictureUrl(num, 'image')
+} catch {
+var ppuser = 'https://telegra.ph/file/265c672094dfa87caea19.jpg'
+}
+const bio = (await ronzz.fetchStatus(num).catch(console.error) || {}).status || 'Tidak ada bio, mungkin kamu private🙏'
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'Welcome👋'}, type: 1 }]
+await ronzz.sendMessage(
+update.id, 
+{ 
+image: { url: ppuser },
+caption: `*Welcome To ${metadata.subject}*
+
+📛 : _@${num.split("@")[0]}_
+🔢 : _${num.split("@")[0]}_
+💌 : _${bio ? bio : '-'}_
+🏅 : _${metadata.participants.length ? metadata.participants.length : "Undefined"}_
+📆 : _${hari}, ${tanggal}_
+⏰ : _${jamwib} *WIB*_
+
+📄 *Deskripsi :*
+${metadata.desc ? metadata.desc : 'Tidak ada deskripsi🙏'}`,
+buttons: button, 
+footer: `${botName} © 2022`,
+mentions: [num] })
+}
+if (update.action == 'remove'){
+try {
+var ppuser = await ronzz.profilePictureUrl(num, 'image')
+} catch {
+var ppuser = 'https://telegra.ph/file/265c672094dfa87caea19.jpg'
+}
+const bio = (await ronzz.fetchStatus(num).catch(console.error) || {}).status || 'Tidak ada bio, mungkin kamu private🙏'
+var button = [{ buttonId: '!text_grup', buttonText: { displayText: 'GoodBye👋'}, type: 1 }]
+await ronzz.sendMessage(
+update.id, 
+{
+image: { url: ppuser },
+caption: `*Leave From Grup ${metadata.subject}*
+
+📛 : _@${num.split("@")[0]}_
+🔢 : _${num.split("@")[0]}_
+💌 : _${bio ? bio : '-'}_
+🏅 : _${metadata.participants.length ? metadata.participants.length : "Undefined"}_
+📆 : _${hari}, ${tanggal}_
+⏰ : _${jamwib} *WIB*_
+
+*┗━━ ❑ GoodBye👋*`,
+buttons: button,
+footer: `${botName} © 2022`, 
+mentions: [num] })
+}
+}
+} catch (err) {
+console.log(err)
+}
+}
            console.log(update)
+           }
         })
 
         ronzz.sendImage = async (jid, path, caption = '', quoted = '', options) => {
