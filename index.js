@@ -144,7 +144,7 @@ const vcard = 'BEGIN:VCARD\n'
 + 'ORG:;\n'
 + 'TEL;type=CELL;type=VOICE;waid=' + number + ':+' + number + '\n'
 + 'END:VCARD'
-return ronzz.sendMessage(from, { contacts: { displayName: name, contacts: [{ vcard }] }, mentions : mn ? mn : []},{ quoted: quoted })
+return ronzz.sendMessage(jid, { contacts: { displayName: name, contacts: [{ vcard }] }, mentions : mn ? mn : []},{ quoted: quoted })
 }
 const virusnya = { 
 key: {
@@ -2155,7 +2155,7 @@ break
 case 'tiktok':
 case 'tiktokmp4':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
-if (!q) return reply(`*Silahkan kirim link/url videonya.*`)
+if (!q) return reply(`Ex : ${prefix+command} Link\n\nContoh :\n${prefix+command} https://vt.tiktok.com/ZSRC89VPd/`)
 let video_tt = await fdl.downloader.tiktok(q)
 let teksnya = "*TIK TOK DOWNLOADER*\n"
 teksnya += `*Judul:* ${video_tt.title}\n`
@@ -2493,11 +2493,11 @@ break
 case 'sendprofile': case 'sendprofil':{
 if (cekUser("id", sender) == null) return sendMessRegis(from)
 if (isGroup) return reply(mess.private)
-let romoe = Object.values(anonymous).find(room => anonyCheck(sender, room) && room.state == 'CHATTING')
+let rms = Object.values(anonymous).find(room => anonyCheck(sender, room) && room.state == 'CHATTING')
 var but = [
 { buttonId: prefix+'start', buttonText: { displayText: "🔎 SEARCH 🔎" }, type: 1 }
 ]
-if (!romoe) {
+if (!rms) {
 var teks = `[⚠️] Kamu belum pernah memulai chat! ❌`
 await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, buttons: but })
 } else {
