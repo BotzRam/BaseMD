@@ -267,6 +267,14 @@ ronzz.sendMessageFromContent(partnerJID, msg.message, { contextInfo })
 }
 }
 
+// Function for Anonymous Chat
+function anonyCheck(who = '', _db) {
+return [_db.a, _db.b].includes(who)
+}
+function anonyOther(who = '', _db) {
+return who == _db.a ? _db.b : who == _db.b ? _db.a : ''
+}
+
 //Response Addlist
 if (!isCmd && isGroup && isAlreadyResponList(from, chats, db_respon_list)) {
 var get_data_respon = getDataResponList(from, chats, db_respon_list)
