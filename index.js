@@ -613,7 +613,7 @@ addCmd(command, 1, db_dashboard)
 break
 
 case 'owner':{
-sendContact(from, ownerNomer, ownerName, msg)
+ronzz.sendContact(from, [ownerNomer], msg)
 }
 addCmd(command, 1, db_dashboard)
 break
@@ -2495,7 +2495,7 @@ await ronzz.sendMessage(from, { text: teks, footer: `${botName} © 2022`, button
 } else {
 let rms = Object.values(anonymous).find(room => [room.a, room.b].includes(sender) && room.state == "CHATTING")
 var partnerJID = anonyOther(sender, rms)
-var res = await ronzz.sendContact(partnerJID, [sender.split("@")[0]])
+var res = await sendContact(partnerJID, sender.split("@")[0], pushname)
 ronzz.sendMessage(from, { text: '[✅] Berhasil mengirim profil ke teman chat anda!' }, { quoted: msg })
 ronzz.sendMessage(partnerJID, { text: '[👨👩] Teman chat kamu memberikan kontak profil nya!' }, { quoted: res })
 }
