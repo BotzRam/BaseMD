@@ -85,7 +85,7 @@ npm start
 ## Edit Owner 
 
 <details>
-    <summary> <b>Edit Owner options/settings.js</b></summary><br/>
+    <summary> <b>Edit Owner options/setting.js</b></summary><br/>
 
 ```ts
 //Website api (jangan di ganti tomlol)
