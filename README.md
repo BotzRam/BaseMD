@@ -133,7 +133,7 @@ const mess = {
 	errorApi: "Maaf terjadi kesalahan"
 }
 
-module.exports = { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess, payment }
+module.exports = { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, email, youtube, region, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess }
 ```
 
 </details>
