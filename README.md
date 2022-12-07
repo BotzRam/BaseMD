@@ -91,10 +91,10 @@ npm start
 //Website api (jangan di ganti tomlol)
 const api = "https://ronzxapis.my.id" //Apabila link api error segera lapor ke owner
 
-// Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
+//Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
 const apikey = "APIKEY" //login di https://ronzxapis.my.id to get apikey || login di https://ronzxapis.my.id untuk mendapatkan apikey
 
-// Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
+//Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
 const apikeyAntlatic = "APIKEY" //Untuk cara mendapatkannya ada di channel https://youtube.com/c/RonzzYT di deskripsi video
 
 //Other
@@ -102,6 +102,9 @@ const botName = "VelzzyBot" //Nama bot
 const owner = ["628817839722","16784037437"] //Ganti agar fitur owner bisa digunakan
 const ownerNomer = "628817839722" //Nomor lu
 const ownerName = "Ronzz YT" //Nama lu
+const email = "ronzzyt8598@gmail.com" //Email lu
+const youtube = "https://youtube.com/c/RonzzYT" //Youtube lu kalau ngga punya kasih tanda strip "-"
+const region = "Indonesia" //Region lu
 const footer = "VelzzyBotz © 2022" //Seterah
 const packname = "© VelzzyBotz" //Sticker wm ubah
 const author = "Di Buat Oleh Ronzz YT" //Sticker wm ubah nama lu
