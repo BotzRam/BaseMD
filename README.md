@@ -88,7 +88,7 @@ npm start
     <summary> <b>Edit Owner options/settings.js</b></summary><br/>
 
 ```ts
-  //Website api (jangan di ganti tomlol)
+//Website api (jangan di ganti tomlol)
 const api = "https://ronzxapis.my.id" //Apabila link api error segera lapor ke owner
 
 // Free apikey (Apikey expired silahkan login terus ganti APIKEY dgn apikey lu)
@@ -130,22 +130,6 @@ const mess = {
 	errorApi: "Maaf terjadi kesalahan"
 }
 
-//Payment
-const payment = {
-    qris: {
-      link_nya: "https://telegra.ph/file/3c485ff201d9337be14ef.jpg",
-      atas_nama: "Ronzz YT"
-    },
-    dana: {
-      nomer: "08817839722",
-      atas_nama: "Ronzz YT"
-    },
-    ovo: {
-      nomer: "08817839722",
-      atas_nama: "Ronzz YT"
-    }
-}
-
 module.exports = { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess, payment }
 ```
 
@@ -181,6 +165,5 @@ module.exports = { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, owne
 - Ronzz YT ( Gw )
 - Saipul Anuar
 - Danzz Coding
-- Penyedia Apikey
 - My Subscriber
 - All Konten Kreator Bot
