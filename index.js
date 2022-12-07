@@ -440,6 +440,8 @@ ${readmore}
 - ${prefix}sourcecode
 
 *PREMIUM MENU*
+- ${prefix}jadibot
+- ${prefix}listjadibot
 - ${prefix}spamcall
 - ${prefix}spamsms1
 - ${prefix}spamsms2
@@ -827,6 +829,34 @@ let text_request =`*| REQUEST FITUR |*\n`
 text_request +=`Dari : ${sender.split('@')[0]}\n`
 text_request +=`Pesan : ${pesan_request}`
 ronzz.sendMessage(`${ownerNomer}@s.whatsapp.net`, {text: text_request}, {quoted:fkontak})
+break
+
+case 'jadibot': {
+if (cekUser("id", sender) == null) return sendMessRegis(from)
+if (cekUser("premium", sender) !== true) return reply(mess.prem)
+if (isGroup) return reply(mess.private)
+jadibot(ronzz, msg, from)
+}
+break
+
+case 'listjadibot':{
+if (cekUser("id", sender) == null) return sendMessRegis(from)
+if (cekUser("premium", sender) == false) return reply(mess.prem)
+if (isGroup) return reply(mess.private)
+try {
+let user = [... new Set([...global.conns.filter(ronzz => ronzz.user).map(ronzz => ronzz.user)])]
+let te = "*List Jadibot*\n\n"
+let y = await ronzz.decodeJid(user.id)
+for (let i of user){
+let y = await ronzz.decodeJid(i.id)
+te += " × User : @" + y.split("@")[0] + "\n"
+te += " × Name : " + i.name + "\n\n"
+}
+ronzz.sendMessage(from, { text: te, mentions: [y]}, { quoted: msg })
+} catch (err) {
+reply('Belum ada user yang jadibot.')
+}
+}
 break
 
 case 'spamcall':{
