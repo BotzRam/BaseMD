@@ -39,7 +39,7 @@ const { buttonvirus } = require('./options/virus/buttonvirus')
 const { buttonvirus2 } = require('./options/virus/buttonvirus2')
 
 // Response
-const { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess, payment } = require("./options/setting");
+const { api, apikey, apikeyAntlatic, botName, owner, ownerNomer, ownerName, footer, packname, author, sessionName, thumbnail, qris, menfess, source, bc, responP, sp, mess } = require("./options/setting");
 const { addCmd } = require('./function/cmd')
 const { stalkff, stalkml } = require("./function/stalker");
 const { pinterest, wallpaper, wikimedia, quotesAnime, komiku, ssweb, sholat, tafsirsurah, fbdl } = require("./function/scraper");
