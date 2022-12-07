@@ -128,7 +128,7 @@ const mess = {
 	prem: "Command ini khusus member premium",
 	group: "Command ini hanya bisa digunakan di grup",
 	private: "Command ini hanya bisa digunakan di Private Chat",
-	wait: " Mohon tunggu sebentar...",
+	wait: "⏳ Mohon tunggu sebentar...",
 	errorLv: "Link yang kamu berikan tidak valid",
 	errorApi: "Maaf terjadi kesalahan"
 }
